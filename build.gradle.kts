@@ -22,11 +22,6 @@ dependencies {
     implementation(libs.spring.boot.starter.thymeleaf)
     implementation(libs.bootstrap)
     testImplementation(libs.spring.boot.starter.test)
-    //https://spring.io/guides/gs/securing-web
-    implementation("org.springframework.boot:spring-boot-starter-security")
-    // Temporary explicit version to fix Thymeleaf bug
-    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.2.RELEASE")
-    testImplementation("org.springframework.security:spring-security-test")
 }
 
 tasks {
