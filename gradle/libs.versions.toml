@@ -1,0 +1,17 @@
+[versions]
+kotlin = "2.0.20"
+springBoot = "3.3.3"
+bootstrap = "5.1.0"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin"}
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+
+[libraries]
+spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot"}
+spring-boot-starter-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+bootstrap = { module = "org.webjars:bootstrap", version.ref = "bootstrap" }
+
