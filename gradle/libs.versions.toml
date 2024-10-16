@@ -1,11 +1,8 @@
 [versions]
-kotlin = "2.0.20"
 springBoot = "3.3.3"
 bootstrap = "5.1.0"
 
 [plugins]
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
-kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin"}
 spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
 
 [libraries]

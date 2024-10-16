@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.kotlin)
-    alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.spring.boot)
+    id("java")
 }
 
 group = "es.unizar.webeng"
@@ -11,8 +10,10 @@ repositories {
     mavenCentral()
 }
 
-kotlin {
-    jvmToolchain(17)
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 dependencies {
@@ -28,6 +29,9 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks {
+    bootJar {
+        // Configura la clase principal
+        mainClass.set("es.unizar.webeng.hello.Application") // Asegúrate de que este sea el nombre completo
+    }
 }
