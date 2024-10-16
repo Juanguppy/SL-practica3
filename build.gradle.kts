@@ -3,7 +3,7 @@ plugins {
     id("java")
 }
 
-group = "es.unizar.webeng"
+group = "es.unizar.sl"
 version = "2024-SNAPSHOT"
 
 repositories {
@@ -32,6 +32,6 @@ dependencies {
 tasks {
     bootJar {
         // Configura la clase principal
-        mainClass.set("es.unizar.webeng.hello.Application") // Asegúrate de que este sea el nombre completo
+        mainClass.set("es.unizar.sl.p3.Application") // Asegúrate de que este sea el nombre completo
     }
 }
