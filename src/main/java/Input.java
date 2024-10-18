@@ -1,3 +1,5 @@
+package es.unizar.sl.p3;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -5,7 +7,7 @@ import java.io.IOException;
 public class Input {
     // Importante: Cambiar a ruta absoluta donde se sitúa el database.bat
     public static String appLocalRoute =
-            "cd /d C:\\Users\\Kamal\\Desktop\\SeptimoCuatrimestre\\SistemasLegados\\p3\\Database-MSDOS && database.bat";
+            "cd /d .\\Database-MSDOS\\Database-MSDOS && database.bat";
 
     public static void main(String[] args) {
         startApp();
@@ -24,7 +26,7 @@ public class Input {
             // Iniciar el proceso
             Process process = processBuilder.start();
             // Esperar un momento para asegurarnos de que el .bat esté corriendo
-            Thread.sleep(3000); // Espera 2 segundos (ajusta según sea necesario)
+            Thread.sleep(5000); // Espera 2 segundos (ajusta según sea necesario)
 
             // Simular la pulsación de la tecla '1'
             simularTecla(KeyEvent.VK_1);
