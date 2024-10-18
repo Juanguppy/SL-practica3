@@ -5,6 +5,10 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class Input {
+
+    static {
+        System.setProperty("java.awt.headless", "false");
+    }
     // Importante: Cambiar a ruta absoluta donde se sitúa el database.bat
     public static String appLocalRoute =
             "cd /d .\\Database-MSDOS\\Database-MSDOS && database.bat";

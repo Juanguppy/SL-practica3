@@ -12,7 +12,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17)) // Default to Java 17
+        languageVersion.set(JavaLanguageVersion.of(21)) // Cambiar a Java 21
     }
 }
 
