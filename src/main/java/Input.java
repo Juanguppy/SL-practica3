@@ -1,21 +1,26 @@
 package es.unizar.sl.p3;
 
-import java.awt.*;
+import java.awt.AWTException;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
+import java.awt.image.BufferedImage;
 
 public class Input {
-
     static {
         System.setProperty("java.awt.headless", "false");
     }
+
     // Importante: Cambiar a ruta absoluta donde se sitúa el database.bat
     public static String appLocalRoute =
             "cd /d .\\Database-MSDOS\\Database-MSDOS && database.bat";
-
-    public static void main(String[] args) {
-        startApp();
-    }
 
     public static void startApp() {
         ejecutarComando(appLocalRoute);
@@ -30,11 +35,18 @@ public class Input {
             // Iniciar el proceso
             Process process = processBuilder.start();
             // Esperar un momento para asegurarnos de que el .bat esté corriendo
-            Thread.sleep(5000); // Espera 2 segundos (ajusta según sea necesario)
+            Thread.sleep(5000); // Espera 5 segundos (ajusta según sea necesario)
 
-            // Simular la pulsación de la tecla '1'
-            simularTecla(KeyEvent.VK_1);
-            System.out.println("Tecla '1' pulsada");
+            // Simular la pulsación de la tecla '4'
+            simularTecla(KeyEvent.VK_4);
+            Thread.sleep(5000); // Espera 5 segundos (ajusta según sea necesario)
+            // Capturar la pantalla completa
+            BufferedImage capture = capturarPantallaCompleta();
+
+            // Realizar OCR en la captura de pantalla
+            OCR ocr = new OCR();
+            String ocrResult = ocr.extractTextFromImage(capture);
+            System.out.println("Resultado del OCR: " + ocrResult);
 
             // Esperar a que el proceso termine y capturar el código de salida
             int exitCode = process.waitFor();
@@ -47,11 +59,47 @@ public class Input {
 
     public static void simularTecla(int keyCode) {
         try {
-            Robot robot = new Robot();
-            robot.keyPress(keyCode); // Presionar la tecla
-            robot.keyRelease(keyCode); // Liberar la tecla
+            if (!GraphicsEnvironment.isHeadless()) {
+                Robot robot = new Robot();
+                robot.keyPress(keyCode);
+                robot.keyRelease(keyCode);
+            } else {
+                System.out.println("El entorno es headless, no se puede simular la pulsación de teclas.");
+            }
         } catch (AWTException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static BufferedImage capturarPantallaCompleta() {
+        try {
+            Robot robot = new Robot();
+            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            return robot.createScreenCapture(screenRect);
+        } catch (AWTException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    
+}
+
+class OCR {
+    private Tesseract tesseract;
+
+    public OCR() {
+        tesseract = new Tesseract();
+        tesseract.setDatapath("./Tesseract-OCR/tessdata"); // Path to tessdata directory
+        tesseract.setLanguage("spa"); // Configurar el idioma para usar spa.traineddata
+    }
+
+    public String extractTextFromImage(BufferedImage image) {
+        try {
+            return tesseract.doOCR(image);
+        } catch (TesseractException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
