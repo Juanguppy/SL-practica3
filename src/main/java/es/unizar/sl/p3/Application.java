@@ -11,9 +11,12 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
 public class Application {
+    @Autowired
+    private Input input;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -22,7 +25,7 @@ public class Application {
     @Bean
     public CommandLineRunner run() {
         return args -> {
-            Input.startApp();
+            input.startApp();
         };
     }
 }

@@ -1,4 +1,6 @@
-package es.unizar.sl.p3;
+package es.unizar.sl.p3.controller;
+
+import es.unizar.sl.p3.services.OCRService;
 
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
@@ -19,11 +21,22 @@ import java.awt.Toolkit;
 @Controller
 public class HelloController {
 
+   /* @Autowired
+    private OCRService ocrService;
+
+    @Autowired
+    private RobotService robotService;*/
+
     @GetMapping("/")
     public String welcome(Model model) {
         model.addAttribute("message", "Hello, World!");
         return "welcome";
     }
+
+   /* @GetMapping("/total-registros")
+    public int getTotalRegistros() {
+        return ocrService.getTotalRegistros();
+    }*/
 
     @GetMapping("/ocr")
     public String performOCR(Model model) {

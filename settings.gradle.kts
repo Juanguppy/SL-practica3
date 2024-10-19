@@ -1,1 +1,1 @@
-rootProject.name = "lab1-git-race"
+rootProject.name = "database-sl-grupo5"
