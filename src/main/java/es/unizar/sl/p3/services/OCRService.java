@@ -14,6 +14,7 @@ public class OCRService {
         tesseract = new Tesseract();
         tesseract.setDatapath("./Tesseract-OCR/tessdata"); // Path to tessdata directory
         tesseract.setLanguage("spa"); // Configurar el idioma para usar spa.traineddata
+        tesseract.setPageSegMode(6); // esto deberia mejorar algo el ocr
     }
 
     public String extractTextFromImage(BufferedImage image) {
