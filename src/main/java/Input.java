@@ -12,6 +12,8 @@ import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import java.awt.image.BufferedImage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Input {
     static {
@@ -47,6 +49,9 @@ public class Input {
             OCR ocr = new OCR();
             String ocrResult = ocr.extractTextFromImage(capture);
             System.out.println("Resultado del OCR: " + ocrResult);
+            int numArchivos = extraerNumeroDeTresDigitos(ocrResult);
+            System.out.println("Número de archivos: " + numArchivos);
+            simularTecla(KeyEvent.VK_ENTER); // volver al main menú 
 
             // Esperar a que el proceso termine y capturar el código de salida
             int exitCode = process.waitFor();
@@ -54,6 +59,17 @@ public class Input {
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static int extraerNumeroDeTresDigitos(String texto) {
+        // Patrón para buscar el primer número de uno o más dígitos
+        Pattern pattern = Pattern.compile("\\b\\d{1,}\\b");
+        Matcher matcher = pattern.matcher(texto);
+        if (matcher.find()) {
+            return Integer.parseInt(matcher.group());
+        } else {
+            return -1; // Retorna -1 si no se encuentra el patrón
         }
     }
 
