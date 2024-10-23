@@ -42,10 +42,12 @@ public class Input {
             // STUB, esto lo harán los endpoints, de momento lo hacemos todo secuencial para depurar en una maquina
             int registros = manager.getTotalRegisters();
             System.out.println("Numero de registros: " + registros);
+            //manager.getEveryImage(); // :) 
 
             // Esperar a que el proceso termine y capturar el código de salida
             Programa p = manager.listProgramData("Mugsy"); 
             Programa p2 = manager.listProgramData("Paintbox"); 
+            manager.listEveryProgram();
             int exitCode = process.waitFor();
             System.out.println("Proceso terminado con código: " + exitCode);
 

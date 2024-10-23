@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+91   Z-MAN                       ARCADE              G       91
+92   JACK AND THE BEANSTALK      ARCADE              G       92
+93   TERROR DAKTIL 4D            ARCADE              G       93
+94   ENSAMBLADOR                 UTILIDAD            G       94
+95   BOULDER DASH                ARCADE              G       95
+96   HELLFIRE                    ARCADE              G       96
+97   GAMES DESIGNER              UTILIDAD            G       97
+98   METEROIDS                   ARCADE              G       98
+99   CHESSO                      JUEGO DE MESA       G       99
+100  FRENZY                      ARCADE              G       100
+101  GIFT FROM THE GODS          ARCADE              H       101
+102  ENDURO                      ARCADE              H       102
+103  BLUE MAX                    ARCADE              H       103
+104  MATCH DAY                   S. DEPORTIVO        H       104
+105  ALIEN 8                     VIDEOAVENTURA       H       105
+106  RIVER RAID                  ARCADE              H       106
+107  LUNAR JETMAN                ARCADE              H       107
+108  CYRUS IS CHESS              JUEGO DE MESA       H       108
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

@@ -1,5 +1,8 @@
 package es.unizar.sl.p3.services;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 import es.unizar.sl.p3.model.Programa;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -68,6 +71,41 @@ public class MainService {
         robot.simularTecla(KeyEvent.VK_ENTER);
         //TODO PARSEAR LOS RESULTADOS Y DEVOLVER 
         return null;
+    }
+
+    public void listEveryProgram() throws InterruptedException{
+        robot.simularTecla(KeyEvent.VK_6);
+        Thread.sleep(1000);
+        robot.simularTecla(KeyEvent.VK_ENTER);
+        Thread.sleep(1000);
+        BufferedImage capture = robot.capturarPantallaCompleta();
+        String ocrResult = ocr.extractTextFromImage(capture);
+        System.out.println(ocrResult);
+    }
+
+    public void getEveryImage() throws InterruptedException, IOException{
+        robot.simularTecla(KeyEvent.VK_6);
+        Thread.sleep(1000);
+        robot.simularTecla(KeyEvent.VK_ENTER);
+        Thread.sleep(1000);
+        File folder = new File("capturas");
+        if (!folder.exists()) {
+            boolean created = folder.mkdir(); // Crea la carpeta si no existe
+            if (created) {
+                System.out.println("Carpeta 'capturas' creada.");
+            } else {
+                System.out.println("No se pudo crear la carpeta 'capturas'.");
+            }
+        }
+        for(int i = 0; i < 64; i++){
+            BufferedImage capture = robot.capturarPantallaCompleta();
+            robot.simularTecla(KeyEvent.VK_SPACE);
+            File outputFile = new File("capturas", "captura_" + i + ".png");
+            ImageIO.write(capture, "png", outputFile);
+            Thread.sleep(1000);
+        }
+
+
     }
 
     public List<String> listProgramsByCinta(String cintaID){

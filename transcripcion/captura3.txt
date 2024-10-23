@@ -1,0 +1,21 @@
+Nº   NOMBRE              TIPO              CINTA  REGISTRO
+55   MORSE               UTILIDAD          C      55
+56   KNOT 3D             ARCADE            C      56
+57   TUTOR               UTILIDAD          C      57
+58   TANK TRAX           ARCADE            C      58
+59   CHICAGO GANG        ARCADE            C      59
+60   EL GOLPE            ARCADE            C      60
+61   BANDERA A CUADROS   SIMULADOR         C      61
+62   THE WAR OF THE WORLDS  VIDEOAVENTURA  E      62
+63   KNIGHT DRIVER       ARCADE            E      63
+64   JUMP CHALLENGER     ARCADE            E      64
+65   THE FALL GUY        ARCADE            E-Y    65
+66   AVALON              VIDEOAVENTURA     E      66
+67   DALEY THOMPSON'S DECATHLON  ARCADE    E      67
+68   BEACH HEAD          ARCADE            E-29   68
+69   WORLD CUP           ARCADE            E      69
+70   SCUBA DIVE          ARCADE            E      70
+71   BIORRITMOS          UTILIDAD          E      71
+72   BRUCE LEE           ARCADE            F      72
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

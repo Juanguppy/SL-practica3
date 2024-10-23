@@ -1,0 +1,21 @@
+Nº   NOMBRE              TIPO              CINTA  REGISTRO
+37  ANDROIDE I          ARCADE            B      37
+38  DOOMSDAY CASTLE     ARCADE            B      38
+39  SUPERCHESS          JUEGO DE MESA     C      39
+40  THE HOBBIT          CONVERSACIONAL    C      40
+41  HARRIER ATTACK      ARCADE            C      41
+42  FRED                ARCADE            C      42
+43  PINBALL WIZARD      ARCADE            C      43
+44  MELBOURNE DRAW      UTILIDAD          C      44
+45  JUMPING JACK        ARCADE            C      45
+46  GOBBLEMAN           ARCADE            C      46
+47  AHH DIDUMS          ARCADE            C      47
+48  ORBITER             ARCADE            C      48
+49  MOLAR MAUL          ARCADE            C      49
+50  DEFENDER            ARCADE            C      50
+51  ALCHEMIST           VIDEOAVENTURA     C      51
+52  AQUAPLANE           ARCADE            C      52
+53  XADOM               ARCADE            C      53
+54  STAR TREK           SIMULADOR         C      54
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR
