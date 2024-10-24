@@ -1,0 +1,22 @@
+ Nº   NOMBRE                              TIPO              CINTA  REGISTRO
+ 181  SOUTHERN BELLE                      SIMULADOR         L-31   181
+ 182  POLE POSITION                       ARCADE            L      182
+ 183  POPEYE                              ARCADE            L-25   183
+ 184  BOUNTY BOB STRIKES BACK             ARCADE            M      184
+ 185  AD ASTRA                            ARCADE            M      185
+ 186  3D TANK DUEL                        ARCADE            M      186
+ 187  HIGHWAY ENCOUNTER                   ARCADE            N      187
+ 188  THE DAMBUSTERS                      SIMULADOR         N      188
+ 189  WORLD SERIES BASKETBALL             S. DEPORTIVO      N-X    189
+ 190  KOKOTONI WILF                       ARCADE            N      190
+ 191  GILLIGAN'S GOLD                     ARCADE            N-23   191
+ 192  UU-CALC                             UTILIDAD          M      192
+ 193  CRITICAL MASS                       ARCADE            N      193
+ 194  FIGHTING WARRIOR                    ARCADE            N      194
+ 195  OLE TORO                            ARCADE            M-22   195
+ 196  BUCK ROGERS                         ARCADE            6      196
+ 197  B.C. BILL                           ARCADE            N      197
+ 198  MOON CRESTA                         ARCADE            C      198
+
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

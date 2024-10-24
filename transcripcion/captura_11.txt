@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+199  SNOOKER                     S. DEPORTIVO        N       199
+200  NIGHTSHADE                  VIDEOAVENTURA       N       200
+201  DRAGON TORC                 VIDEOAVENTURA       N       201
+202  CAULDRON                    VIDEOAVENTURA       N       202
+203  GYROSCOPE                   ARCADE              M-25    203
+204  YIE AR KUNG-FU              ARCADE              M-33    204
+205  BEACH HEAD II               ARCADE              31      205
+206  COMMANDO                    ARCADE              M-20    206
+207  RAMBO                       ARCADE              M-29    207
+208  ZORRO                       VIDEOAVENTURA       M       208
+209  FULL THROTTLE               ARCADE              M       209
+210  GLASS                       ARCADE              M-25    210
+211  PYJAMARAMA                  VIDEOAVENTURA       M       211
+212  GUNFRIGHT                   ARCADE              0       212
+213  IMPOSSIBLE MISSION          VIDEOAVENTURA       0       213
+214  WHEELIE                     ARCADE              0       214
+215  SGRIZAM                     ARCADE              0-29    215
+216  BATTLE OF THE PLANETS       ARCADE              0       216
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

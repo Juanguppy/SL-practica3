@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+271  DRAGON'S LAIR               ARCADE              T       271
+272  TENNIS                      ARCADE              S       272
+273  GHOST'N GOBLINS             ARCADE              S       273
+274  PHANTOMAS                   VIDEOAVENTURA       S       274
+275  JACK THE NIPPER             VIDEOAVENTURA       S       275
+276  GLADIATOR                   ARCADE              S       276
+277  ARCADIA                     ARCADE              S       277
+278  ANTIMATERIA                 ARCADE              S       278
+279  STRIP POKER                 JUEGO DE MESA       T       279
+280  ASTER                       ARCADE              T       280
+281  TAJ-MAHAL                   ARCADE              T       281
+282  COW-BOY                     ARCADE              T       282
+283  RIDDLER'S DEN               VIDEOAVENTURA       T       283
+284  MACADAM BUMPER              ARCADE              T       284
+285  PANAMA JOE                  ARCADE              T       285
+286  SNOWMAN                     ARCADE              T       286
+287  DEATH STAR                  ARCADE              T       287
+288  BABALIBA                    VIDEOAVENTURA       T       288
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

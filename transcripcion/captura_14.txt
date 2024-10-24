@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+253  PENTAGRAM                  VIDEOAVENTURA  R       253
+254  THE PLANETS                ARCADE         S       254
+255  STARSTRIKE II              ARCADE         S       255
+256  CAMELOT'S WARRIORS         ARCADE         Q       256
+257  KUNG-FU MASTER             ARCADE         R-25    257
+258  VECTRON                    ARCADE         R       258
+259  ROCK'N WRESTLE             ARCADE                 259
+260  THE COLT                   UTILIDAD       L-S     260
+261  CONTEXT V7                 UTILIDAD       S       261
+262  SUPERMAN                   ARCADE         S       262
+263  COMPILER                   UTILIDAD       L       263
+264  FAIRLIGHT                  VIDEOAVENTURA  0       264
+265  FRANK BRUNO'S BOXING       ARCADE         0       265
+266  STRONG MAN                 ARCADE         P       266
+267  KYREL                     ARCADE         P       267
+268  SAI COMBAT                 ARCADE         P       268
+269  BATTLE OF THE ZOIDS        ARCADE         S       269
+270  WORLD SERIES BASEBALL      S. DEPORTIVO   S       270
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

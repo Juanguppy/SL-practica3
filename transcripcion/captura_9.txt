@@ -1,0 +1,21 @@
+ Nº   NOMBRE                              TIPO              CINTA  REGISTRO
+ 163  ATIC ATAC                           VIDEOAVENTURA     K      163
+ 164  3D CODENAME MAT                     ARCADE            X      164
+ 165  3D STARSTRIKE                       ARCADE            T      165
+ 166  FIGHTER PILOT                       SIMULADOR         Y      166
+ 167  SUPERCOMCOCOCOS                     ARCADE            X      167
+ 168  PHOENIX                             ARCADE            X      168
+ 169  SHADOWFIRE                          VIDEOAVENTURA     H      169
+ 170  PSST                                ARCADE            J      170
+ 171  D-DAY                               ESTRATEGIA        L      171
+ 172  SABREWULF                           VIDEOAVENTURA     J      172
+ 173  ONE ON ONE                          ARCADE            K      173
+ 174  DALEY THOMPSON'S SUPER-TEST         ARCADE            K-33   174
+ 175  FRANKIE GOES TO HOLLYWOOD           VIDEOAVENTURA     L      175
+ 176  THE PYRAMID                         ARCADE            L      176
+ 177  SORCERY                             ARCADE            L      177
+ 178  THE WAY OF THE EXPLODING FIST       ARCADE            L-32   178
+ 179  POOL                                S. DEPORTIVO      L      179
+ 180  WEST BANK                           ARCADE            L      180
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR
