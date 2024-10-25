@@ -1,0 +1,21 @@
+Nº   NOMBRE                                TIPO                  CINTA   REGISTRO
+667  SOLOMON'S KEY                         ARCADE                23      667
+668  ARQUIMEDES XXI                        CONVERSACIONAL        23      668
+669  HACKER II                             ESTRATEGIA            23      669
+670  H.E.R.O.                              ARCADE                23      670
+671  LOCOMOTION                            ARCADE                24      671
+672  2112 AD                               VIDEOAVENTURA         24      672
+673  THE NINJA MASTER                      ----                  24      673
+674  THE ARTIST                            UTILIDAD              24      674
+675  RUPERT AND THE ICE CASTLE             ARCADE                24      675
+676  WITCH'S CAULDRON                      CONVERSACIONAL        24      676
+677  ATTACK OF THE KILLER TOMATOES         VIDEOAVENTURA         24      677
+678  BIGGLES                               ARCADE                24      678
+679  SUPERSTAR CHALLENGE                   ARCADE                24      679
+680  REGATA                                SIMULADOR             25      680
+681  CROSS                                 ARCADE                25      681
+682  PUD PUD                               ARCADE                25      682
+683  SPY VS SPY                            ARCADE                25      683
+684  GERRY THE GERM                        ARCADE                25      684
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+487  ALIEN HIGHWAY               ARCADE              7       487
+488  BRAINSTORM                  ARCADE              7       488
+489  GUNRUNNER                   ARCADE              7-32    489
+490  CHOPPER RESCUE              ARCADE              7       490
+491  STRIKE                      ARCADE              8       491
+492  BISMARCK                    ESTRATEGIA          8       492
+493  METROCROSS                  ARCADE              8-32    493
+494  BARBARIAN                   ARCADE              8       494
+495  DAN DARE                    ARCADE              8       495
+496  HYDROFOOL                   VIDEOAVENTURA       8       496
+497  MAG MAX                     ARCADE              8-32    497
+498  NICK FALDO PLAYS THE OPEN   S. DEPORTIVO        8       498
+499  BENNY HILL                  ARCADE              8       499
+500  BACK TO THE FUTURE          ARCADE              8       500
+501  INFILTRATOR                 ARCADE              8       501
+502  KANE                        ARCADE              9       502
+503  COLOUR OF MAGIC             CONVERSACIONAL      9       503
+504  DOUBLE TAKE                 VIDEOAVENTURA       9       504
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

@@ -1,0 +1,21 @@
+Nº    NOMBRE                      TIPO            CINTA  REGISTRO
+397   SPACE HARRIER               ARCADE             0     397
+398   CONTABLE                    UTILIDAD           0     398
+399   GAUNTLET                    ARCADE             2     399
+400   LAS TRES LUCES DE GLAURUNG  VIDEOAVENTURA      2     400
+401   TERRA CRESTA                ARCADE             2     401
+402   JAIL BREAK                  ARCADE             2     402
+403   ARKANOID                    ARCADE           2-20    403
+404   LOGO                        UTILIDAD           2     404
+405   FORTH                       UTILIDAD           Y     405
+406   PAGEMAKER                   UTILIDAD           Y     406
+407   THE ARTIST II               UTILIDAD           2     407
+408   COPION                      UTILIDAD           B     408
+409   TC7                         UTILIDAD           B     409
+410   LEGEND OF THE AMAZON WOMEN  ARCADE          0-33    410
+411   STOP THE ITA EXPRESS        ARCADE             T     411
+412   ARMY MOVES                  ARCADE             5     412
+413   DEEP STRIKE                 ARCADE             1     413
+414   BC'S QUEST FOR TIRES        ARCADE             1     414
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

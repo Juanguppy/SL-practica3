@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+415  HERBERT'S DUMMY RUN         VIDEOAVENTURA       1       415
+416  ENDURO RACER                ARCADE              3       416
+417  THE EIDOLON                 ARCADE              4       417
+418  EXPRESS RAIDER              ARCADE              4       418
+419  SCALEXTRIC                  ARCADE              1       419
+420  XEVIOUS                     ARCADE              1       420
+421  REVOLUTION                  ARCADE              1       421
+422  ACE OF ACES                 SIMULADOR           3       422
+423  ESCAPE FROM SINGE'S CASTLE  ARCADE              3       423
+424  WHAM! THE MUSIC BOX         UTILIDAD            3       424
+425  SIGMA 7                     ARCADE              3       425
+426  NEMESIS                     ARCADE              3       426
+427  AVENGER                     VIDEOAVENTURA       5       427
+428  TRAILBLAZER                 ARCADE              5       428
+429  FROST BYTE                  VIDEOAVENTURA       5       429
+430  HEARTLAND                   VIDEOAVENTURA       4       430
+431  ESPIONAGE ISLAND            CONVERSACIONAL      0       431
+432  EL MISTERIO DEL NILO        ARCADE              4       432
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

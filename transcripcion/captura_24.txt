@@ -1,0 +1,21 @@
+Nº   NOMBRE                                TIPO                  CINTA   REGISTRO
+433  PLANET OF DEATH                       CONVERSACIONAL        F       433
+434  SHORT CIRCUIT                         ARCADE                4       434
+435  FERNANDO MARTIN BASKET MASTER         ARCADE                4       435
+436  DINAMITE DAN II                       ARCADE                4       436
+437  BAZOOKA BILL                          ARCADE                2       437
+438  SABOTEUR II                           VIDEOAVENTURA         2       438
+439  SHADOW SKIMMER                        ARCADE                2       439
+440  TAU CETI                              ARCADE                4       440
+441  ACADEMY                               ARCADE                5-28    441
+442  ARCHON                                ARCADE                5       442
+443  LEADER BOARD                          SIMULADOR             4       443
+444  NONAMED                               ARCADE                4       444
+445  RAMON RODRIGUEZ                       ARCADE                5       445
+446  WORLD DESTRUCTION                     ARCADE                5       446
+447  CONTABILIDAD PERSONAL                 UTILIDAD              5       447
+448  ART STUDIO                            UTILIDAD              6       448
+449  DUSTIN                                VIDEOAVENTURA         3       449
+450  THE SACRED ARMOUR OF ANTIRIAD         VIDEOAVENTURA         7       450
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

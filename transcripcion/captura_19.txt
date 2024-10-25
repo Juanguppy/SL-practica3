@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO            CINTA  REGISTRO
+343  PYRACURSE                   VIDEOAVENTURA   X      343
+344  EQUINOX                     VIDEOAVENTURA   X      344
+345  XENO                        ARCADE          X      345
+346  URIDIUM                     ARCADE          X      346
+347  A.C.E.                      ARCADE          X      347
+348  ROLLER COASTER              ARCADE          X      348
+349  THE GREAT ESCAPE            VIDEOAVENTURA   X      349
+350  MONTY ON THE RUN            ARCADE          X      350
+351  SPINDIZZY                   VIDEOAVENTURA   X      351
+352  LODE RUNNER                 ARCADE          Y      352
+353  PAPERBOY                    ARCADE          Y      353
+354  COBRA                       ARCADE          Y      354
+355  GALIUAN                     ARCADE          Y      355
+356  BREAK THRU                  ARCADE          Y      356
+357  I OF THE MASK               ARCADE          Y      357
+358  KONG                        ARCADE          Y      358
+359  BORZAK                      ARCADE          Z      359
+360  COSMIC KANGA                ARCADE          Z      360
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+451  INTERNATIONAL RUGBY         ARCADE              3       451
+452  DEATH WAKE                  ARCADE              6       452
+453  BIG BEN STRIKE AGAIN        ARCADE              3       453
+454  TALES OF ARABIAN NIGHTS     ARCADE              6       454
+455  A VIEW TO A KILL            ARCADE              6-26    455
+456  WILLY'S NEW HAT             ARCADE              6       456
+457  SPELLBOUND                  ARCADE              6       457
+458  STARBIKE                    ARCADE              7       458
+459  FIST II                     VIDEOAVENTURA       1       459
+460  TRASHMAN                    ARCADE              5       460
+461  OMNICOPY 2                  UTILIDAD            7       461
+462  INCA CURSE                  CONVERSACIONAL      Z       462
+463  SPEED DUEL                  ARCADE              6       463
+464  FILECARD                    UTILIDAD            6       464
+465  ESTADISTICA                 UTILIDAD            5       465
+466  THE KET TRILOGY             CONVERSACIONAL      6       466
+467  COSMIC DEBRIS               ARCADE              1       467
+468  TRADER TRILOGY              ARCADE              6       468
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

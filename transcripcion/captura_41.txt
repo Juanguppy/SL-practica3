@@ -1,0 +1,21 @@
+Nº   NOMBRE                                TIPO                  CINTA   REGISTRO
+739  BETA BASIC                            UTILIDAD              18      739
+740  SUPER 48                              UTILIDAD              22      740
+741  UNIVERSAL HERO                        VIDEOAVENTURA         31      741
+742  STAR FIREBIRDS                        ARCADE                31      742
+743  WAR                                   ARCADE                31      743
+744  JACK THE NIPPER II                    ARCADE                31      744
+745  HYSTERIA                              ARCADE                31      745
+746  HOW TO BE A COMPLETE BASTARD          VIDEOAVENTURA         31      746
+747  SUPERSPRINT                           ARCADE                32      747
+748  HERBIE                                UTILIDAD              32      748
+749  GHOSTHUNTERS                          VIDEOAVENTURA         32      749
+750  SUPER ROBIN HOOD                      ARCADE                32      750
+751  MARSPORT                              VIDEOAVENTURA         32      751
+752  BATTLE FOR MIDWAY                     ESTRATEGIA            32      752
+753  DICTATOR                              ESTRATEGIA            32      753
+754  SMUGGLER'S CAVE                       CONVERSACIONAL        33      754
+755  OPERACIONES ESPECIALES                ESTRATEGIA            33      755
+756  STONKERS                              ESTRATEGIA            33      756
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

@@ -1,0 +1,21 @@
+Nº   NOMBRE                                TIPO                  CINTA   REGISTRO
+541  ARC OF YESOD                          VIDEOAVENTURA         11      541
+542  GAME OVER                             ARCADE                12      542
+543  SCOOBY DOO                            ARCADE                13      543
+544  BOMB JACK II                          ARCADE                13      544
+545  ROAD RACE                             ARCADE                13      545
+546  ELECCIONES GENERALES                  ESTRATEGIA            13      546
+547  WHO DARES WINS II                     ARCADE                13      547
+548  TARZAN                                VIDEOAVENTURA         13      548
+549  THE SENTINEL                          ARCADE                14      549
+550  RESCUE ON FRACTALUS                   ARCADE                14      550
+551  BASKETBALL TWO ON TWO                 S. DEPORTIVO          14      551
+552  F-15 STRIKE EAGLE                     ARCADE                14      552
+553  SILENT SERVICE                        SIMULADOR             14      553
+554  HISOFT C                              UTILIDAD              14      554
+555  HISOFT PASCAL                         UTILIDAD              14      555
+556  RED ARROWS                            SIMULADOR             14      556
+557  FLAK                                  ARCADE                14      557
+558  DEUS EX MACHINA                       ARCADE                14      558
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

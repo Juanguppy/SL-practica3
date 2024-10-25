@@ -1,0 +1,21 @@
+Nº   NOMBRE                    TIPO             CINTA   REGISTRO
+505  MARBLE MADNESS            ARCADE           9       505
+506  HARD GUY                  ARCADE           9       506
+507  JUDGE DREDD               ARCADE           9       507
+508  SKY RUNNER                ARCADE           9       508
+509  RANARAMA                  ARCADE           9       509
+510  NEMESIS THE WARLOCK       ARCADE           9       510
+511  WORLD GAMES               ARCADE           10      511
+512  STAR RAIDERS II           ARCADE           10      512
+513  KNUCKLE BUSTERS           ARCADE           10      513
+514  BORER DEEP                ARCADE           7       514
+515  LIVINGSTONE SUPONGO       VIDEOAVENTURA    10      515
+516  COSA NOSTRA               ARCADE           10      516
+517  CONTACT SAM CRUISE        VIDEOAVENTURA    10      517
+518  ACROJET                   SIMULADOR        10      518
+519  IMPOSSABALL               ARCADE           11      519
+520  STAR GLIDER               ARCADE           11      520
+521  FUTURE GAMES              ARCADE           11      521
+522  SAMURAI                   ESTRATEGIA       11      522
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

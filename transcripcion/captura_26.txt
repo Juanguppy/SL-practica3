@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+469  DREAD NOUGHTS               ESTRATEGIA          6       469
+470  DIMENSION DESTRUCTORS       ARCADE              5       470
+471  JAWZ                        ARCADE              N       471
+472  STORM FIGHTERS              ARCADE              N       472
+473  EL CUBO MAGICO              JUEGO DE MESA       2       473
+474  BULLS EYE                   JUEGO DE MESA       4       474
+475  STOCK MARKET                ESTRATEGIA          4       475
+476  THE ORACLE'S CAVE           CONVERSACIONAL      6       476
+477  HEATHROW                    SIMULADOR           3       477
+478  BLADE ALLEY                 ARCADE              6       478
+479  DRAGON'S BANE               CONVERSACIONAL      1       479
+480  HEAD OVER HEELS             VIDEOAVENTURA       7       480
+481  SPIRITS                     VIDEOAVENTURA       7       481
+482  AUFWIEDERSEHEN MONTY        ARCADE              7       482
+483  SUPERSOCCER                 ARCADE              7       483
+484  HEAVY OF THE MAGIC          CONVERSACIONAL      7       484
+485  ROBOT MESSIAH               VIDEOAVENTURA       7       485
+486  MS. PAC-MAN                 ARCADE              7       486
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

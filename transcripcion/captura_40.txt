@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+721  CYRUS II                    JUEGO DE MESA       28      721
+722  NEXOR                       VIDEOAVENTURA       28      722
+723  CRAZY PINGOIN               ARCADE              25      723
+724  INTERNATIONAL VOLLEYBALL    ARCADE              25      724
+725  CLIFF HANGER                ARCADE              30      725
+726  ROCMAN                      VIDEOAVENTURA       30      726
+727  FAIRLIGHT II                VIDEOAVENTURA       30      727
+728  MONTY ON THE RUN            ARCADE              30      728
+729  BOUNCES                     ARCADE              30      729
+730  MANIC MINER II              ARCADE              30      730
+731  METABOLIS                   ARCADE              30      731
+732  NAPOLEON AT WAR             ESTRATEGIA          30      732
+733  COSMIC WARTOAD              ARCADE              30      733
+734  BACK TO SKOOL               ARCADE              30      734
+735  ZOMBIE ZOMBIE               ARCADE              31      735
+736  HAVOC                       ARCADE              31      736
+737  TOAD RUNNER                 VIDEOAVENTURA       31      737
+738  PSI-CHESS                   JUEGO DE MESA       29      738
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

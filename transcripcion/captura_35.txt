@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+631   TUTE                       JUEGO DE MESA       20      631
+632   180 DARTS                  S. DEPORTIVO        20      632
+633   SOS                        VIDEOAVENTURA       20      633
+634   HYPERBOWL                  ARCADE              20      634
+635   ROOM 10                    ARCADE              20      635
+636   ELEVATOR ACTION            ARCADE              20      636
+637   DONKEY KONG                ARCADE              20      637
+638   VIDEO POKER                JUEGO DE MESA       20      638
+639   STAGECOACH                 ARCADE              20      639
+640   TERROR OF THE DEEP         SIMULADOR           21      640
+641   PULSATOR                   ARCADE              21      641
+642   INSPECTOR GADGET           ARCADE              21      642
+643   FEUD                       VIDEOAVENTURA       21      643
+644   ZYTHUM                     ARCADE              21      644
+645   TITANIC                    ESTRATEGIA          21      645
+646   L'AFFAIRE VERACRUZ         CONVERSACIONAL      21      646
+647   ORBIX - THE TERRORBALL     ARCADE              21      647
+648   DRUID                      ARCADE              21      648
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR

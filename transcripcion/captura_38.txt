@@ -1,0 +1,21 @@
+Nº   NOMBRE                      TIPO                CINTA   REGISTRO
+685  SPIKY HAROLD                VIDEOAVENTURA       25      685
+686  MUGSY'S REVENGE             CONVERSACIONAL      26      686
+687  DANDY                       ARCADE              26      687
+688  COP OUT                     ARCADE              26      688
+689  THE DEVIL'S CROWN           VIDEOAVENTURA       26      689
+690  KRIPTON RAIDER              ARCADE              26      690
+691  TOOL MAN                    ARCADE              26      691
+692  GALLIPOLI                   ESTRATEGIA          26      692
+693  CRAZY CLIMBER               ARCADE              26      693
+694  E.T.                        ARCADE              27      694
+695  DIZZY DICE                  ----                27      695
+696  CRYSTAL CASTLES             ARCADE              27      696
+697  ALIEN EVOLUTION             ARCADE              27      697
+698  BLACK MAGIC                 ARCADE              27      698
+699  THE LAST MISSION            ARCADE              27      699
+700  ERIK THE VIKING             CONVERSACIONAL      27      700
+701  FORBIDDEN PLANET            ARCADE              27      701
+702  REBEL PLANET                CONVERSACIONAL      27      702
+
+PULSA SPACE PARA CONTINUAR U OTRA TECLA PARA ACABAR
