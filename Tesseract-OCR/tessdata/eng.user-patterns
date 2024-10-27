@@ -1,2 +1,2 @@
-1-\d\d\d-GOOG-411
-www.\n\\\*.com
+\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+CONTIENE[[:space:]]\d+[[:space:]]ARCHIVOS
