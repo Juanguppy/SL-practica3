@@ -12,7 +12,7 @@ public class OCR {
     public OCR() {
         tesseract = new Tesseract();
         tesseract.setDatapath(".Tesseract-OCR/tessdata"); // Path to tessdata directory
-        tesseract.setLanguage("spa"); // Configurar el idioma para usar spa.traineddata
+        tesseract.setLanguage("eng"); // Configurar el idioma para usar spa.traineddata
     }
 
     public String extractTextFromImage(BufferedImage image) {
