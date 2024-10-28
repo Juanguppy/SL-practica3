@@ -1,2 +1,12 @@
+1\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+2\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+3\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+4\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+5\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+6\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+7\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+8\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
+9\d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
 \d+[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
 CONTIENE[[:space:]]\d+[[:space:]]ARCHIVOS
+\d+[[:space:]]+-[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+.*[[:space:]]+[A-Z]+[[:space:]]+[A-Z]+.*[[:space:]]\d+
