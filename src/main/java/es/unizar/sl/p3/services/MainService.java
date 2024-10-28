@@ -11,6 +11,12 @@ import java.util.regex.Pattern;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import javax.imageio.ImageIO;
+import java.util.Random;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 @Service
 public class MainService {
@@ -22,7 +28,7 @@ public class MainService {
     private RobotService robot;
     
     // returns total number of registers
-    public int getTotalRegisters() throws InterruptedException{
+    public int getTotalRegisters() throws InterruptedException, IOException{
         robot.simularTecla(KeyEvent.VK_4);
         Thread.sleep(5000); // Espera 5 segundos (ajusta según sea necesario)
         // Capturar la pantalla completa
@@ -30,19 +36,26 @@ public class MainService {
 
         // Realizar OCR en la captura de pantalla
         //OCR ocr = new OCR();
-        String ocrResult = ocr.extractTextFromImage(capture);
-        System.out.println("Resultado del OCR: " + ocrResult);
+        //String ocrResult = ocr.extractTextFromImage(capture);
+        //System.out.println("Resultado del OCR: " + ocrResult);
+
+        String filePath = this.saveImage(capture);
+        String ocrResult = ocr.executeTesseractCommand(filePath, "ocrb");
+        this.deleteImage(filePath);
+        System.out.println(ocrResult);
+
         int numArchivos = this.extraerNumeroDeRegistros(ocrResult);
         robot.simularTecla(KeyEvent.VK_ENTER); // volver al main menú 
         return numArchivos;
     }
 
     // given program's name, list its data
-    public Programa listProgramData(String name) throws RuntimeException, InterruptedException{
+    public Programa listProgramData(String name) throws RuntimeException, InterruptedException, IOException{
         // Numero, Nombre, Tipo, Cinta, Registro 
         robot.simularTecla(KeyEvent.VK_7);
         Thread.sleep(1000);
         robot.simularTecla(KeyEvent.VK_N, true);
+        Thread.sleep(1000);
         robot.simularTecla(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         String upperName = name.toUpperCase(); // lo paso a mayusculas
@@ -53,13 +66,17 @@ public class MainService {
                     "Key code not found for character '" + c + "'");
             }
             robot.simularTecla(keyCode, true);
-            Thread.sleep(1000);
+            Thread.sleep(100);
         }
         robot.simularTecla(KeyEvent.VK_ENTER);
-        Thread.sleep(1000); // Espera 1 segundo (ajusta según sea necesario)
+        Thread.sleep(2000); // Espera 1 segundo (ajusta según sea necesario)
 
         BufferedImage capture = robot.capturarPantallaCompleta();
-        String ocrResult = ocr.extractTextFromImage(capture);
+        //String ocrResult = ocr.extractTextFromImage(capture);
+        //System.out.println(ocrResult);
+        String filePath = this.saveImage(capture);
+        String ocrResult = ocr.executeTesseractCommand(filePath, "eng");
+        this.deleteImage(filePath);
         System.out.println(ocrResult);
 
         Thread.sleep(1000);
@@ -70,16 +87,21 @@ public class MainService {
         robot.simularTecla(KeyEvent.VK_N, true);
         robot.simularTecla(KeyEvent.VK_ENTER);
         //TODO PARSEAR LOS RESULTADOS Y DEVOLVER 
+        this.obtenerDatosPrograma(ocrResult);
         return null;
     }
 
-    public void listEveryProgram() throws InterruptedException{
+    public void listEveryProgram() throws InterruptedException, IOException{
         robot.simularTecla(KeyEvent.VK_6);
         Thread.sleep(1000);
         robot.simularTecla(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         BufferedImage capture = robot.capturarPantallaCompleta();
-        String ocrResult = ocr.extractTextFromImage(capture);
+        //String ocrResult = ocr.extractTextFromImage(capture);
+        String filePath = this.saveImage(capture);
+        String ocrResult = ocr.executeTesseractCommand(filePath, "ocrb");
+        this.deleteImage(filePath);
+
         System.out.println(ocrResult);
     }
 
@@ -112,7 +134,7 @@ public class MainService {
         //TODO LISTAR TODOS PROGRAMAS POR CINTA
         return null;
     }
-
+//////////////////////////////////////// Parser logic
     private int extraerNumeroDeRegistros(String texto) {
         // Patrón para buscar el primer número de uno o más dígitos
         Pattern pattern = Pattern.compile("\\b\\d{1,}\\b");
@@ -122,5 +144,54 @@ public class MainService {
         } else {
             return -1; // Retorna -1 si no se encuentra el patrón
         }
+    }
+
+    private Programa obtenerDatosPrograma(String texto){
+        // me quedo con la primera linea (la q tiene la info) y le limpio la basura
+        String bueno = texto.split("\\r?\\n")[0].replaceAll("[^\\x00-\\x7F]", "");
+        System.out.println("Linea limpia: " + bueno);
+        // IF LINEA LIMPIA == ALGO CONCRETO QUE SALE CUANDO NO EXISTE --> EXCEPCIÓN Y TRATAR EL CASO DE QUE NO EXISTE EL PROGRAMA EN LA BASE D DATOS
+        String[] separado = bueno.split("\\s+");
+        // UTILIDAD, ARCADE, CONVERSACIONAL, VIDEOAVENTURA, SIMULADOR, JUEGO DE MESA, S. DEPORTIVO, ESTRATEGIA son las clases válidas
+        HashSet<String> clasesValidas = new HashSet<>();
+        clasesValidas.add("UTILIDAD");
+        clasesValidas.add("ARCADE");
+        clasesValidas.add("CONVERSACIONAL");
+        clasesValidas.add("VIDEOAVENTURA");
+        clasesValidas.add("SIMULADOR");
+        clasesValidas.add("JUEGO"); // de mesa, pero la palabra q me encontrare es juego
+        clasesValidas.add("S."); //idem
+        clasesValidas.add("ESTRATEGIA");
+
+        
+        Programa p = new Programa(); 
+        p.setNumero(Integer.parseInt(separado[0]));
+        p.setRegistro(p.getNumero()); // el registro y el numero coinciden xD 
+        int i = 0; 
+        while(i < separado.length && !clasesValidas.contains(separado[i])){
+            System.out.println(i + " " + separado[i]); i++;
+            //TODO: Juntarlos e p.nombre
+        }
+        if(i == separado.length){
+            // fatal error
+        }
+        // TODO while != CINTA:X --> juntarlos en p.tipo
+        // TODO p.cinta = X 
+
+        return null;
+    }
+//////////////////////////////////////// IO logic
+    private String saveImage(BufferedImage capture) throws IOException{
+        Random random = new Random();
+        int randomNumber = random.nextInt(10000);
+        String filePath = "Tesseract-OCR\\capturas\\captura_" + randomNumber + ".png";
+        File outputfile = new File(filePath);
+        ImageIO.write(capture, "png", outputfile);
+
+        return filePath;
+    }
+
+    private void deleteImage(String filePath) throws IOException{
+        Files.delete(Paths.get(filePath));
     }
 }

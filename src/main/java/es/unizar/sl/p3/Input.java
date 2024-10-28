@@ -2,6 +2,7 @@ package es.unizar.sl.p3;
 
 import es.unizar.sl.p3.model.Programa;
 import es.unizar.sl.p3.services.MainService;
+import es.unizar.sl.p3.services.OCRService;
 import java.awt.image.BufferedImage;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,12 +42,19 @@ public class Input {
 
             // STUB, esto lo harán los endpoints, de momento lo hacemos todo secuencial para depurar en una maquina
             int registros = manager.getTotalRegisters();
+           // OCRService OCRService = new OCRService();
+           // String content = OCRService.executeTesseractCommand("Tesseract-OCR\\capturas\\captura_0.png", "ocrb");
+           // System.out.println(content);
             System.out.println("Numero de registros: " + registros);
             //manager.getEveryImage(); // :) 
 
             // Esperar a que el proceso termine y capturar el código de salida
+            //Programa p0 = manager.listProgramData("HOLA");  //TODO TRATAR EL CASO DE NO EXISTE
             Programa p = manager.listProgramData("Mugsy"); 
             Programa p2 = manager.listProgramData("Paintbox"); 
+            Programa p3 = manager.listProgramData("The birds and the bees"); 
+            Programa p4 = manager.listProgramData("INTERCEPTOR COBALT");
+            Programa p5 = manager.listProgramData("Reversi");
             manager.listEveryProgram();
             int exitCode = process.waitFor();
             System.out.println("Proceso terminado con código: " + exitCode);

@@ -5,15 +5,19 @@ public class Programa {
     private String nombre;
     private String tipo;
     private String cinta;
-    private String registro;
+    private int registro;
 
     // Constructor
-    public Programa(int numero, String nombre, String tipo, String cinta, String registro) {
+    public Programa(int numero, String nombre, String tipo, String cinta, int registro) {
         this.numero = numero;
         this.nombre = nombre;
         this.tipo = tipo;
         this.cinta = cinta;
         this.registro = registro;
+    }
+
+    public Programa(){
+
     }
 
     // Getters y Setters
@@ -49,11 +53,11 @@ public class Programa {
         this.cinta = cinta;
     }
 
-    public String getRegistro() {
+    public int getRegistro() {
         return registro;
     }
 
-    public void setRegistro(String registro) {
+    public void setRegistro(int registro) {
         this.registro = registro;
     }
 
