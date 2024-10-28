@@ -22,6 +22,8 @@ dependencies {
     implementation(libs.spring.boot.starter.thymeleaf)
     implementation(libs.bootstrap)
     implementation("net.sourceforge.tess4j:tess4j:4.5.5")
+    implementation ("org.json:json:20230618")
+
     testImplementation(libs.spring.boot.starter.test)
 }
 

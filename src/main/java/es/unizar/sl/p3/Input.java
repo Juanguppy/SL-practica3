@@ -22,7 +22,7 @@ public class Input {
 
     // Importante: Cambiar a ruta absoluta donde se sitúa el database.bat
     public static String appLocalRoute =
-            "cd /d .\\Database-MSDOS\\Database-MSDOS && database.bat";
+        "cd /d C:\\Users\\Kamal\\Desktop\\SeptimoCuatrimestre\\SistemasLegados\\p3\\Database-MSDOS && database.bat";
 
     public void startApp() {
         ejecutarComando(appLocalRoute);
@@ -34,20 +34,20 @@ public class Input {
         processBuilder.inheritIO(); // Redirige la salida de la consola al proceso actual
 
         try {
-            // Iniciar el proceso
+            // Iniciar el proces
             Process process = processBuilder.start();
             // Esperar un momento para asegurarnos de que el .bat esté corriendo
             Thread.sleep(5000); // Espera 5 segundos (ajusta según sea necesario)
 
             // STUB, esto lo harán los endpoints, de momento lo hacemos todo secuencial para depurar en una maquina
-            int registros = manager.getTotalRegisters();
+            int registros = manager.getTotalRegisters(true);
             System.out.println("Numero de registros: " + registros);
             //manager.getEveryImage(); // :) 
 
             // Esperar a que el proceso termine y capturar el código de salida
-            Programa p = manager.listProgramData("Mugsy"); 
-            Programa p2 = manager.listProgramData("Paintbox"); 
-            manager.listEveryProgram();
+            Programa p = manager.listProgramData("Mugsy", true);
+            Programa p2 = manager.listProgramData("Paintbox", true);
+            manager.listEveryProgram(true);
             int exitCode = process.waitFor();
             System.out.println("Proceso terminado con código: " + exitCode);
 

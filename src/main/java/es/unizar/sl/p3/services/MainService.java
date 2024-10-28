@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import es.unizar.sl.p3.services.OCRApiService;
 
 @Service
 public class MainService {
@@ -19,10 +20,13 @@ public class MainService {
     private OCRService ocr;
 
     @Autowired
+    private OCRApiService ocrApi;
+
+    @Autowired
     private RobotService robot;
     
     // returns total number of registers
-    public int getTotalRegisters() throws InterruptedException{
+    public int getTotalRegisters(boolean withApi) throws InterruptedException{
         robot.simularTecla(KeyEvent.VK_4);
         Thread.sleep(5000); // Espera 5 segundos (ajusta según sea necesario)
         // Capturar la pantalla completa
@@ -30,15 +34,24 @@ public class MainService {
 
         // Realizar OCR en la captura de pantalla
         //OCR ocr = new OCR();
-        String ocrResult = ocr.extractTextFromImage(capture);
-        System.out.println("Resultado del OCR: " + ocrResult);
+        String ocrResult = null;
+
+        if (!withApi) {
+            ocrResult = ocr.extractTextFromImage(capture);
+            System.out.println("Resultado del OCR: " + ocrResult);
+        }
+        else{
+            ocrResult = ocrApi.extractTextFromImageApi(capture);
+            System.out.println("Resultado del OCR API: " + ocrResult);
+        }
+        
         int numArchivos = this.extraerNumeroDeRegistros(ocrResult);
         robot.simularTecla(KeyEvent.VK_ENTER); // volver al main menú 
         return numArchivos;
     }
 
     // given program's name, list its data
-    public Programa listProgramData(String name) throws RuntimeException, InterruptedException{
+    public Programa listProgramData(String name, boolean withApi) throws RuntimeException, InterruptedException{
         // Numero, Nombre, Tipo, Cinta, Registro 
         robot.simularTecla(KeyEvent.VK_7);
         Thread.sleep(1000);
@@ -59,7 +72,13 @@ public class MainService {
         Thread.sleep(1000); // Espera 1 segundo (ajusta según sea necesario)
 
         BufferedImage capture = robot.capturarPantallaCompleta();
-        String ocrResult = ocr.extractTextFromImage(capture);
+        String ocrResult = null;
+        if (!withApi) {
+            ocrResult = ocr.extractTextFromImage(capture);
+        }
+        else{
+            ocrResult = ocrApi.extractTextFromImageApi(capture);
+        }
         System.out.println(ocrResult);
 
         Thread.sleep(1000);
@@ -73,13 +92,19 @@ public class MainService {
         return null;
     }
 
-    public void listEveryProgram() throws InterruptedException{
+    public void listEveryProgram(boolean withApi) throws InterruptedException{
         robot.simularTecla(KeyEvent.VK_6);
         Thread.sleep(1000);
         robot.simularTecla(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         BufferedImage capture = robot.capturarPantallaCompleta();
-        String ocrResult = ocr.extractTextFromImage(capture);
+        String ocrResult = null;
+        if (!withApi) {
+            ocrResult = ocr.extractTextFromImage(capture);
+        }
+        else{
+            ocrResult = ocrApi.extractTextFromImageApi(capture);
+        }
         System.out.println(ocrResult);
     }
 
