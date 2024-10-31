@@ -41,20 +41,20 @@ public class Input {
             Thread.sleep(5000); // Espera 5 segundos (ajusta según sea necesario)
 
             // STUB, esto lo harán los endpoints, de momento lo hacemos todo secuencial para depurar en una maquina
-            int registros = manager.getTotalRegisters();
+            //int registros = manager.getTotalRegisters();
            // OCRService OCRService = new OCRService();
            // String content = OCRService.executeTesseractCommand("Tesseract-OCR\\capturas\\captura_0.png", "ocrb");
            // System.out.println(content);
-            System.out.println("Numero de registros: " + registros);
+            //System.out.println("Numero de registros: " + registros);
             //manager.getEveryImage(); // :) 
 
             // Esperar a que el proceso termine y capturar el código de salida
             //Programa p0 = manager.listProgramData("HOLA");  //TODO TRATAR EL CASO DE NO EXISTE
-            Programa p = manager.listProgramData("Mugsy"); 
+           /* Programa p = manager.listProgramData("Mugsy"); 
             Programa p2 = manager.listProgramData("Paintbox"); 
             Programa p3 = manager.listProgramData("The birds and the bees"); 
             Programa p4 = manager.listProgramData("INTERCEPTOR COBALT");
-            Programa p5 = manager.listProgramData("Reversi");
+            Programa p5 = manager.listProgramData("Reversi");*/
             manager.listEveryProgram();
             int exitCode = process.waitFor();
             System.out.println("Proceso terminado con código: " + exitCode);
