@@ -137,7 +137,7 @@ public class MainService {
         if(contenidoLimpio == null){
             return null; // throw excepción, capturar y fatal error
         }
-        List<Programa> programas = poblarProgramasListados(contenidoLimpio);
+        ArrayList<Programa> programas = poblarProgramasListados(contenidoLimpio);
         for(Programa p : programas){
             System.out.println(p);
         }
