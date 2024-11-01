@@ -22,12 +22,11 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    /*
     @Bean
     public CommandLineRunner run() {
         return args -> {
             input.startApp();
         };
     }
-     */
+
 }
