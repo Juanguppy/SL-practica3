@@ -56,6 +56,9 @@ public class Input {
             Programa p4 = manager.listProgramData("INTERCEPTOR COBALT");
             Programa p5 = manager.listProgramData("Reversi");*/
             manager.listEveryProgram();
+            manager.listProgramsByCinta("A");
+            manager.listProgramsByCinta("B");
+            manager.listProgramsByCinta("31");
             int exitCode = process.waitFor();
             System.out.println("Proceso terminado con código: " + exitCode);
 

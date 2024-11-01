@@ -20,7 +20,8 @@ public class ProcessService {
 
     // Matar el proceso 
     public void matarProceso() {
-        if (proceso != null) {
+        if (proceso != null && proceso.isAlive()) {
+            System.out.println("PID: " + proceso.pid());
             proceso.destroy(); // Cerrar el proceso de manera ordenada
             try {
                 // Esperar un momento para ver si el proceso se cierra

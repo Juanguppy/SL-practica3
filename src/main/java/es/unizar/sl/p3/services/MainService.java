@@ -128,7 +128,7 @@ public class MainService {
         }
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
-        processMaker.lanzarProceso(this.comando); 
+        processMaker.lanzarProceso(this.comando);
         Thread.sleep(1000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         String contenidoLimpio = this.limpiarContenido(salida);
@@ -138,40 +138,25 @@ public class MainService {
             return null; // throw excepción, capturar y fatal error
         }
         ArrayList<Programa> programas = poblarProgramasListados(contenidoLimpio);
-        for(Programa p : programas){
+        /*for(Programa p : programas){
             System.out.println(p);
-        }
+        }*/
         // borrar fichero es necesario? no se
+        processMaker.matarProceso();
         return programas;
     }
 
-    public void getEveryImage() throws InterruptedException, IOException{
-        robot.simularTecla(KeyEvent.VK_6);
-        Thread.sleep(1000);
-        robot.simularTecla(KeyEvent.VK_ENTER);
-        Thread.sleep(1000);
-        File folder = new File("capturas");
-        if (!folder.exists()) {
-            boolean created = folder.mkdir(); // Crea la carpeta si no existe
-            if (created) {
-                System.out.println("Carpeta 'capturas' creada.");
-            } else {
-                System.out.println("No se pudo crear la carpeta 'capturas'.");
+    public ArrayList<Programa> listProgramsByCinta(String cintaID) throws InterruptedException, IOException{
+        ArrayList<Programa> programas = this.listEveryProgram();  
+        ArrayList<Programa> programasEnCinta = new ArrayList<>();
+        System.out.println("Programas en la cinta: " + cintaID);
+        for(Programa p : programas){
+            if(p.getCinta().contains(cintaID)){
+                programasEnCinta.add(p);
+                //System.out.println(p);
             }
         }
-        for(int i = 0; i < 64; i++){
-            BufferedImage capture = robot.capturarPantallaCompleta();
-            robot.simularTecla(KeyEvent.VK_SPACE);
-            File outputFile = new File("capturas", "captura_" + i + ".png");
-            ImageIO.write(capture, "png", outputFile);
-            Thread.sleep(1000);
-        }
 
-
-    }
-
-    public List<String> listProgramsByCinta(String cintaID){
-        //TODO LISTAR TODOS PROGRAMAS POR CINTA
         return null;
     }
 //////////////////////////////////////// Parser logic
