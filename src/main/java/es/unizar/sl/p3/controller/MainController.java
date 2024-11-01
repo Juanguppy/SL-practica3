@@ -21,6 +21,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.Desktop;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
 public class MainController {
@@ -77,13 +78,9 @@ public class MainController {
         model.addAttribute("identificadorCinta", identificadorCinta);
 
         // Programa p = ocrService.listProgramData(nombrePrograma);
-        // Obtener y añadir la lista de datos del programa al modelo
-        model.addAttribute("programaC", "FIFA");
-        model.addAttribute("numeroC", 2);
-        model.addAttribute("nombreC", "FIFA");
-        model.addAttribute("tipoC", "ARCADE");
-        model.addAttribute("cintaC", "A");
-        model.addAttribute("registroC", "C");
+        ArrayList<Programa> p = ocrService.listProgramsByCinta(identificadorCinta);
+        model.addAttribute("numRegistros", registros);
+        model.addAttribute("programas", p);
         return "home";
     }
 

@@ -112,7 +112,7 @@ public class MainService {
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
         processMaker.lanzarProceso(this.comando);
-        Thread.sleep(1000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
+        Thread.sleep(7000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         String contenidoLimpio = this.limpiarContenido(salida);
         // System.out.println(contenidoLimpio);
@@ -143,7 +143,7 @@ public class MainService {
             }
         }
 
-        return null;
+        return programasEnCinta;
     }
 
     //////////////////////////////////////// Parser logic

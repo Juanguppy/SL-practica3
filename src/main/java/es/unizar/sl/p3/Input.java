@@ -65,13 +65,13 @@ public class Input {
              * Programa p5 = manager.listProgramData("Reversi");
              */
             // manager.listEveryProgram();
-            // manager.listProgramsByCinta("A");
-            // manager.listProgramsByCinta("B");
-            // manager.listProgramsByCinta("31");
-            //System.out.println("Numero de registros" + manager.getTotalRegisters());
+            //;
+            // manager.listProgramsByCinta("B"
+            //manager.listProgramsByCinta("31");
+            // System.out.println("Numero de registros" + manager.getTotalRegisters());
 
-            Programa p = manager.listProgramData("MUGSY");
-            System.out.println(p.toString());
+           // Programa p = manager.listProgramData("MUGSY");
+            System.out.println(manager.listProgramsByCinta("A").toString());
         } catch (IOException | InterruptedException | RuntimeException e) {
             e.printStackTrace();
         }

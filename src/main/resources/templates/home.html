@@ -115,6 +115,8 @@
         </div>
     </section>
 
+    <!-- Contenedor de búsqueda de programas por identificador de cinta -->
+<div class="search-container">
     <!-- Búsqueda de programas por identificador de cinta -->
     <section class="search-section">
         <form th:action="@{/listar-cinta}" method="get">
@@ -124,24 +126,24 @@
         </form>
 
         <!-- Tabla de programas en la cinta especificada -->
-        <div th:if="${identificadorCinta}">
+        <div th:if="${programas}">
             <h3>Programas en la Cinta</h3>
             <table>
                 <thead>
-                <tr>
-                    <th>Nº</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Cinta</th>
-                    <th>Registro</th>
-                </tr>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Cinta</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <td th:text="${numeroC}">Nº</td>
-                    <td th:text="${nombreC}">Nombre</td>
-                    <td th:text="${tipoC}">Tipo</td>
-                    <td th:text="${cintaC}">Cinta</td>
-                    <td th:text="${registroC}">Registro</td>
+                    <tr th:each="dato : ${programas}">
+                        <td th:text="${dato.numero}">Nº</td>
+                        <td th:text="${dato.nombre}">Nombre</td>
+                        <td th:text="${dato.tipo}">Tipo</td>
+                        <td th:text="${dato.cinta}">Cinta</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
