@@ -59,7 +59,7 @@ public class MainService {
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
         processMaker.lanzarProceso(this.comando);
-        Thread.sleep(1000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
+        Thread.sleep(3000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         // String contenidoLimpio = this.limpiarContenido(salida);
 
@@ -85,7 +85,7 @@ public class MainService {
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
         processMaker.lanzarProceso(this.comando);
-        Thread.sleep(1000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
+        Thread.sleep(5000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         // String contenidoLimpio = this.limpiarContenido(salida);
 
@@ -219,17 +219,22 @@ public class MainService {
 
         if (matcher.find()) {
             // Extraer los valores del matcher
-            int numero = Integer.parseInt(matcher.group(1));    // Número del programa
-            String nombre = matcher.group(2);                   // Nombre del programa
-            String tipo = matcher.group(3);                     // Tipo del programa
-            String cinta = matcher.group(4);                    // Cinta del programa
+            int numero = Integer.parseInt(matcher.group(1)); // Número del programa
+            String nombre = matcher.group(2); // Nombre del programa
+            String tipo = matcher.group(3); // Tipo del programa
+            String cinta = matcher.group(4); // Cinta del programa
 
             // Crear y retornar el objeto Programa con los datos extraídos
-            return new Programa(numero, nombre, tipo, cinta, numero);  // Registro se establece en 0 por defecto
+            return new Programa(numero, nombre, tipo, cinta, numero); // Registro se establece en 0 por defecto
         } else {
             // Si no se encuentran coincidencias, retornar null o lanzar una excepción
-            System.out.println("No se encontraron datos válidos en el texto.");
-            return null;
+            int numero = -1; // Número del programa
+            String nombre = "Programa"; // Nombre del programa
+            String tipo = "Not"; // Tipo del programa
+            String cinta = "Found"; // Cinta del programa
+
+            // Crear y retornar el objeto Programa con los datos extraídos
+            return new Programa(numero, nombre, tipo, cinta, numero); // Registro se establece en 0 por defecto
         }
     }
 

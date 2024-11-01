@@ -1,5 +1,5 @@
 RUN "database"
 7N
-MUSGSY
+A
 
 

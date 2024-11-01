@@ -34,12 +34,15 @@ public class MainController {
     @Autowired
     private Input input;
 
+    private int registros = 0;
+
     // Endpoint que carga la página principal con el total de registros
     @GetMapping("/")
     public String welcome(Model model) throws IOException, InterruptedException {
         // Obtener y enviar el número de registros al modelo
         int numRegistros = ocrService.getTotalRegisters();
-        model.addAttribute("numRegistros",numRegistros);
+        registros = numRegistros;
+        model.addAttribute("numRegistros", numRegistros);
         return "home";
     }
 
@@ -54,6 +57,9 @@ public class MainController {
 
         Programa p = ocrService.listProgramData(nombrePrograma);
         System.out.println(p.toString());
+
+        // Reenviar el numero de registros al modelo
+        model.addAttribute("numRegistros", registros);
 
         // Obtener y añadir la lista de datos del programa al modelo
         model.addAttribute("programa", nombrePrograma);
@@ -70,7 +76,7 @@ public class MainController {
         // Añadir el nombre del programa al modelo
         model.addAttribute("identificadorCinta", identificadorCinta);
 
-        //Programa p = ocrService.listProgramData(nombrePrograma);
+        // Programa p = ocrService.listProgramData(nombrePrograma);
         // Obtener y añadir la lista de datos del programa al modelo
         model.addAttribute("programaC", "FIFA");
         model.addAttribute("numeroC", 2);
@@ -81,15 +87,12 @@ public class MainController {
         return "home";
     }
 
-
     /*
-    @GetMapping("/total-registros")
-    public int getTotalRegistros() throws IOException, InterruptedException {
-        return ocrService.getTotalRegisters();
-    }
-    */
-
-
+     * @GetMapping("/total-registros")
+     * public int getTotalRegistros() throws IOException, InterruptedException {
+     * return ocrService.getTotalRegisters();
+     * }
+     */
 
     @GetMapping("/ocr")
     public String performOCR(Model model) {
@@ -129,11 +132,14 @@ public class MainController {
         ITesseract instance = new Tesseract();
         instance.setDatapath("C:/Program Files/Tesseract-OCR/tessdata"); // Cambiar ruta según sea necesario
         instance.setLanguage("spa"); // Configurar el idioma para usar spa.traineddata
-        // Configurar el modo de motor de OCR (OEM) y el modo de segmentación de página (PSM)
-        //instance.setOcrEngineMode(3); // Modo de motor de OCR por defecto (OEM_DEFAULT)
-        //instance.setPageSegMode(7);
+        // Configurar el modo de motor de OCR (OEM) y el modo de segmentación de página
+        // (PSM)
+        // instance.setOcrEngineMode(3); // Modo de motor de OCR por defecto
+        // (OEM_DEFAULT)
+        // instance.setPageSegMode(7);
         try {
-            String result = instance.doOCR(new File("C:/Users/almod/OneDrive/Imágenes/Capturas de pantalla/ocr_example.png"));
+            String result = instance
+                    .doOCR(new File("C:/Users/almod/OneDrive/Imágenes/Capturas de pantalla/ocr_example.png"));
             model.addAttribute("ocrResult", result);
         } catch (TesseractException e) {
             e.printStackTrace();
