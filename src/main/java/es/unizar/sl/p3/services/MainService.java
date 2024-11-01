@@ -100,7 +100,7 @@ public class MainService {
         String filePath = this.saveImage(capture);
         String ocrResult = ocr.executeTesseractCommand(filePath, "eng");
         this.deleteImage(filePath);
-        System.out.println(ocrResult);
+        System.out.println("ocrResult" + ocrResult);
 
         Thread.sleep(1000);
         robot.simularTecla(KeyEvent.VK_S, true);
@@ -244,10 +244,16 @@ public class MainService {
         if(i == separado.length){
             // fatal error
         }
+        p.setNombre(separado[3]);
+        p.setTipo(separado[4]);
+        p.setCinta(separado[5]);
+
+        return p;
+
         // TODO while != CINTA:X --> juntarlos en p.tipo
         // TODO p.cinta = X 
 
-        return null;
+        //return null;
     }
 //////////////////////////////////////// IO logic
     private String saveImage(BufferedImage capture) throws IOException{

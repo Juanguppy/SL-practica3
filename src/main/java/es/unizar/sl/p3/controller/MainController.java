@@ -1,46 +1,95 @@
 package es.unizar.sl.p3.controller;
 
+import es.unizar.sl.p3.Input;
+import es.unizar.sl.p3.services.MainService;
 import es.unizar.sl.p3.services.OCRService;
-
+import es.unizar.sl.p3.services.RobotService;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import es.unizar.sl.p3.model.Programa;
 
-import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.awt.Desktop;
-import java.awt.Toolkit;
+import java.io.IOException;
 
 @Controller
-public class HelloController {
-
-   /* @Autowired
-    private OCRService ocrService;
+public class MainController {
 
     @Autowired
-    private RobotService robotService;*/
+    private MainService ocrService;
 
+    @Autowired
+    private RobotService robotService;
+
+    @Autowired
+    private Input input;
+
+    // Endpoint que carga la página principal con el total de registros
     @GetMapping("/")
-    public String welcome(Model model) {
-        model.addAttribute("message", "Hello, World!");
-        return "welcome";
+    public String welcome(Model model) throws IOException, InterruptedException {
+        // Obtener y enviar el número de registros al modelo
+        //int numRegistros = ocrService.getTotalRegisters();
+        model.addAttribute("numRegistros", 777);
+        return "home";
     }
 
-   /* @GetMapping("/total-registros")
-    public int getTotalRegistros() {
-        return ocrService.getTotalRegistros();
-    }*/
+    // Endpoint para listar datos de un programa específico ingresado por el usuario
+    @GetMapping("/listar-programa")
+    public String listarPrograma(@RequestParam("nombrePrograma") String nombrePrograma, Model model)
+            throws IOException, InterruptedException {
+        // Añadir el nombre del programa al modelo
+        model.addAttribute("nombrePrograma", nombrePrograma);
+
+        //Programa p = ocrService.listProgramData(nombrePrograma);
+
+        // Obtener y añadir la lista de datos del programa al modelo
+        model.addAttribute("programa", "FIFA");
+        model.addAttribute("numero", 2);
+        model.addAttribute("nombre", "FIFA");
+        model.addAttribute("tipo", "ARCADE");
+        model.addAttribute("cinta", "A");
+        return "home";
+    }
+
+    @GetMapping("/listar-cinta")
+    public String listarCinta(@RequestParam("identificadorCinta") String identificadorCinta, Model model)
+            throws IOException, InterruptedException {
+        // Añadir el nombre del programa al modelo
+        model.addAttribute("identificadorCinta", identificadorCinta);
+
+        //Programa p = ocrService.listProgramData(nombrePrograma);
+        // Obtener y añadir la lista de datos del programa al modelo
+        model.addAttribute("programaC", "FIFA");
+        model.addAttribute("numeroC", 2);
+        model.addAttribute("nombreC", "FIFA");
+        model.addAttribute("tipoC", "ARCADE");
+        model.addAttribute("cintaC", "A");
+        model.addAttribute("registroC", "C");
+        return "home";
+    }
+
+
+    /*
+    @GetMapping("/total-registros")
+    public int getTotalRegistros() throws IOException, InterruptedException {
+        return ocrService.getTotalRegisters();
+    }
+    */
+
+
 
     @GetMapping("/ocr")
     public String performOCR(Model model) {
-
         try {
             // Definir las coordenadas y dimensiones del rectángulo
             int x = 100; // Coordenada x de la esquina superior izquierda

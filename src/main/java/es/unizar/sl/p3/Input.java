@@ -29,6 +29,12 @@ public class Input {
         ejecutarComando(appLocalRoute);
     }
 
+    public void iniciarApp() throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", appLocalRoute);
+        processBuilder.inheritIO(); // Redirige la salida de la consola al proceso actual
+        Process process = processBuilder.start();
+    }
+
     public void ejecutarComando(String command) {
         // Se usa cmd.exe y el comando en partes
         ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", command);
