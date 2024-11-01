@@ -68,8 +68,10 @@ public class Input {
             // manager.listProgramsByCinta("A");
             // manager.listProgramsByCinta("B");
             // manager.listProgramsByCinta("31");
-            System.out.println("Numero de registros" + manager.getTotalRegisters());
+            //System.out.println("Numero de registros" + manager.getTotalRegisters());
 
+            Programa p = manager.listProgramData("kamalfnafnla");
+            System.out.println(p.toString());
         } catch (IOException | InterruptedException | RuntimeException e) {
             e.printStackTrace();
         }

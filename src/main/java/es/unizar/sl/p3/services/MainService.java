@@ -53,7 +53,6 @@ public class MainService {
     public int getTotalRegisters() throws InterruptedException, IOException {
         fileManager.crearFichero(this.ficheroEntrada);
         /// Escribir en el fichero
-        // calcularNumeroRegistros();
         StringBuilder contenido = new StringBuilder();
         contenido.append(RUN_PROGRAM).append(System.lineSeparator());
         contenido.append("4").append(System.lineSeparator());
@@ -75,43 +74,25 @@ public class MainService {
     // given program's name, list its data
     public Programa listProgramData(String name) throws RuntimeException, InterruptedException, IOException {
         // Numero, Nombre, Tipo, Cinta, Registro
-        robot.simularTecla(KeyEvent.VK_7);
-        Thread.sleep(1000);
-        robot.simularTecla(KeyEvent.VK_N, true);
-        Thread.sleep(1000);
-        robot.simularTecla(KeyEvent.VK_ENTER);
-        Thread.sleep(1000);
-        String upperName = name.toUpperCase(); // lo paso a mayusculas
-        for (char c : upperName.toCharArray()) {
-            int keyCode = KeyEvent.getExtendedKeyCodeForChar(c); // obtengo el codigo de evento
-            if (KeyEvent.CHAR_UNDEFINED == keyCode) {
-                throw new RuntimeException(
-                        "Key code not found for character '" + c + "'");
-            }
-            robot.simularTecla(keyCode, true);
-            Thread.sleep(100);
+        fileManager.crearFichero(this.ficheroEntrada);
+        /// Escribir en el fichero
+        // calcularNumeroRegistros();
+        StringBuilder contenido = new StringBuilder();
+        contenido.append(RUN_PROGRAM).append(System.lineSeparator());
+        contenido.append("7N").append(System.lineSeparator());
+        contenido.append(name).append(System.lineSeparator());
+        contenido.append("").append(System.lineSeparator());
+        contenido.append(System.lineSeparator());
+        fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
+        processMaker.lanzarProceso(this.comando);
+        Thread.sleep(1000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
+        String salida = fileManager.leerFichero(this.ficheroSalida);
+        // String contenidoLimpio = this.limpiarContenido(salida);
+
+        if (salida == null) {
+            return null; // throw excepción, capturar y fatal error
         }
-        robot.simularTecla(KeyEvent.VK_ENTER);
-        Thread.sleep(2000); // Espera 1 segundo (ajusta según sea necesario)
-
-        BufferedImage capture = robot.capturarPantallaCompleta();
-        // String ocrResult = ocr.extractTextFromImage(capture);
-        // System.out.println(ocrResult);
-        String filePath = this.saveImage(capture);
-        String ocrResult = ocr.executeTesseractCommand(filePath, "eng");
-        this.deleteImage(filePath);
-        System.out.println("ocrResult" + ocrResult);
-
-        Thread.sleep(1000);
-        robot.simularTecla(KeyEvent.VK_S, true);
-        robot.simularTecla(KeyEvent.VK_ENTER);
-        robot.simularTecla(KeyEvent.VK_N, true);
-        robot.simularTecla(KeyEvent.VK_ENTER);
-        robot.simularTecla(KeyEvent.VK_N, true);
-        robot.simularTecla(KeyEvent.VK_ENTER);
-        // TODO PARSEAR LOS RESULTADOS Y DEVOLVER
-        this.obtenerDatosPrograma(ocrResult);
-        return null;
+        return obtenerDatosPrograma(salida);
     }
 
     public ArrayList<Programa> listEveryProgram() throws InterruptedException, IOException {
@@ -232,46 +213,24 @@ public class MainService {
     }
 
     private Programa obtenerDatosPrograma(String texto) {
-        // me quedo con la primera linea (la q tiene la info) y le limpio la basura
-        String bueno = texto.split("\\r?\\n")[0].replaceAll("[^\\x00-\\x7F]", "");
-        System.out.println("Linea limpia: " + bueno);
-        // IF LINEA LIMPIA == ALGO CONCRETO QUE SALE CUANDO NO EXISTE --> EXCEPCIÓN Y
-        // TRATAR EL CASO DE QUE NO EXISTE EL PROGRAMA EN LA BASE D DATOS
-        String[] separado = bueno.split("\\s+");
-        // UTILIDAD, ARCADE, CONVERSACIONAL, VIDEOAVENTURA, SIMULADOR, JUEGO DE MESA, S.
-        // DEPORTIVO, ESTRATEGIA son las clases válidas
-        HashSet<String> clasesValidas = new HashSet<>();
-        clasesValidas.add("UTILIDAD");
-        clasesValidas.add("ARCADE");
-        clasesValidas.add("CONVERSACIONAL");
-        clasesValidas.add("VIDEOAVENTURA");
-        clasesValidas.add("SIMULADOR");
-        clasesValidas.add("JUEGO"); // de mesa, pero la palabra q me encontrare es juego
-        clasesValidas.add("S."); // idem
-        clasesValidas.add("ESTRATEGIA");
+        // Expresión regular para capturar el número, nombre, tipo y cinta
+        Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+([\\w]+)\\s+([\\w]+)\\s+CINTA:([A-Z])");
+        Matcher matcher = pattern.matcher(texto);
 
-        Programa p = new Programa();
-        p.setNumero(Integer.parseInt(separado[0]));
-        p.setRegistro(p.getNumero()); // el registro y el numero coinciden xD
-        int i = 0;
-        while (i < separado.length && !clasesValidas.contains(separado[i])) {
-            System.out.println(i + " " + separado[i]);
-            i++;
-            // TODO: Juntarlos e p.nombre
+        if (matcher.find()) {
+            // Extraer los valores del matcher
+            int numero = Integer.parseInt(matcher.group(1));    // Número del programa
+            String nombre = matcher.group(2);                   // Nombre del programa
+            String tipo = matcher.group(3);                     // Tipo del programa
+            String cinta = matcher.group(4);                    // Cinta del programa
+
+            // Crear y retornar el objeto Programa con los datos extraídos
+            return new Programa(numero, nombre, tipo, cinta, numero);  // Registro se establece en 0 por defecto
+        } else {
+            // Si no se encuentran coincidencias, retornar null o lanzar una excepción
+            System.out.println("No se encontraron datos válidos en el texto.");
+            return null;
         }
-        if (i == separado.length) {
-            // fatal error
-        }
-        p.setNombre(separado[3]);
-        p.setTipo(separado[4]);
-        p.setCinta(separado[5]);
-
-        return p;
-
-        // TODO while != CINTA:X --> juntarlos en p.tipo
-        // TODO p.cinta = X
-
-        // return null;
     }
 
     //////////////////////////////////////// IO logic

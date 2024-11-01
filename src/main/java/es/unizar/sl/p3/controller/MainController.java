@@ -38,8 +38,8 @@ public class MainController {
     @GetMapping("/")
     public String welcome(Model model) throws IOException, InterruptedException {
         // Obtener y enviar el número de registros al modelo
-        //int numRegistros = ocrService.getTotalRegisters();
-        model.addAttribute("numRegistros", 777);
+        int numRegistros = ocrService.getTotalRegisters();
+        model.addAttribute("numRegistros",numRegistros);
         return "home";
     }
 
