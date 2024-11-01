@@ -70,7 +70,7 @@ public class Input {
             // manager.listProgramsByCinta("31");
             //System.out.println("Numero de registros" + manager.getTotalRegisters());
 
-            Programa p = manager.listProgramData("kamalfnafnla");
+            Programa p = manager.listProgramData("MUSGSY");
             System.out.println(p.toString());
         } catch (IOException | InterruptedException | RuntimeException e) {
             e.printStackTrace();

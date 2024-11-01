@@ -50,14 +50,17 @@ public class MainController {
         // Añadir el nombre del programa al modelo
         model.addAttribute("nombrePrograma", nombrePrograma);
 
-        //Programa p = ocrService.listProgramData(nombrePrograma);
+        System.out.println(nombrePrograma);
+
+        Programa p = ocrService.listProgramData(nombrePrograma);
+        System.out.println(p.toString());
 
         // Obtener y añadir la lista de datos del programa al modelo
-        model.addAttribute("programa", "FIFA");
-        model.addAttribute("numero", 2);
-        model.addAttribute("nombre", "FIFA");
-        model.addAttribute("tipo", "ARCADE");
-        model.addAttribute("cinta", "A");
+        model.addAttribute("programa", nombrePrograma);
+        model.addAttribute("numero", p.getNumero());
+        model.addAttribute("nombre", p.getNombre());
+        model.addAttribute("tipo", p.getTipo());
+        model.addAttribute("cinta", p.getCinta());
         return "home";
     }
 
