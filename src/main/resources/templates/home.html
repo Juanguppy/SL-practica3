@@ -16,12 +16,52 @@
             margin: 20px 0;
         }
 
-        /* Estilos de búsqueda */
+        /* Contenedor principal para dividir la página */
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Lista de programas a la izquierda */
+        .program-list {
+            width: 25%;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-right: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .program-list h3 {
+            text-align: center;
+        }
+
+        .program-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .program-list li {
+            margin: 5px 0;
+        }
+
+        .program-list a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .program-list a:hover {
+            color: #007bff;
+        }
+
+        /* Contenedor de búsqueda */
         .search-container {
             display: flex;
             justify-content: center;
             gap: 30px;
-            width: 100%;
+            width: 75%;
             max-width: 800px;
         }
 
@@ -30,7 +70,7 @@
             padding: 15px;
             border-radius: 5px;
             width: 100%;
-            max-width: 350px;
+            max-width: 450px;
         }
 
         form {
@@ -81,73 +121,84 @@
     <p>Número de registros en el sistema: <span th:text="${numRegistros}">0</span></p>
 </section>
 
-<!-- Contenedor de búsqueda de programas -->
-<div class="search-container">
-    <!-- Búsqueda de programas por nombre -->
-    <section class="search-section">
-        <form th:action="@{/listar-programa}" method="get">
-            <label for="nombrePrograma">Nombre del programa:</label>
-            <input type="text" id="nombrePrograma" name="nombrePrograma" placeholder="Ejemplo: Programa1">
-            <button type="submit">Buscar</button>
-        </form>
+<div class="main-container">
+    <!-- Lista de programas -->
+    <div class="program-list">
+        <h3>Lista de Programas</h3>
+        <ul>
+            <li th:each="programa : ${programasListado}">
+                <a th:href="@{/listar-programa(nombrePrograma=${programa.nombre})}"
+                   th:text="${programa.nombre}">Programa</a>
+            </li>
+        </ul>
+    </div>
 
-        <!-- Tabla de datos del programa -->
-        <div th:if="${programa}">
-            <h3>Datos del Programa</h3>
-            <table>
-                <thead>
-                <tr>
-                    <th>Nº</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Cinta</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="dato, iterStat : ${programa}">
-                    <td th:text="${numero}">Nº</td>
-                    <td th:text="${nombre}">Nombre</td>
-                    <td th:text="${tipo}">Tipo</td>
-                    <td th:text="${cinta}">Cinta</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <!-- Contenedor de búsqueda de programas -->
+    <div class="search-container">
+        <!-- Búsqueda de programas por nombre -->
+        <section class="search-section">
+            <form th:action="@{/listar-programa}" method="get">
+                <label for="nombrePrograma">Nombre del programa:</label>
+                <input type="text" id="nombrePrograma" name="nombrePrograma" placeholder="Ejemplo: Programa1">
+                <button type="submit">Buscar</button>
+            </form>
 
-    <!-- Contenedor de búsqueda de programas por identificador de cinta -->
-<div class="search-container">
-    <!-- Búsqueda de programas por identificador de cinta -->
-    <section class="search-section">
-        <form th:action="@{/listar-cinta}" method="get">
-            <label for="identificadorCinta">Identificador de la cinta:</label>
-            <input type="text" id="identificadorCinta" name="identificadorCinta" placeholder="Ejemplo: A o 45">
-            <button type="submit">Buscar</button>
-        </form>
-
-        <!-- Tabla de programas en la cinta especificada -->
-        <div th:if="${programas}">
-            <h3>Programas en la Cinta</h3>
-            <table>
-                <thead>
+            <!-- Tabla de datos del programa -->
+            <div th:if="${programa}">
+                <h3>Datos del Programa</h3>
+                <table>
+                    <thead>
                     <tr>
                         <th>Nº</th>
                         <th>Nombre</th>
                         <th>Tipo</th>
                         <th>Cinta</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${numero}">Nº</td>
+                        <td th:text="${nombre}">Nombre</td>
+                        <td th:text="${tipo}">Tipo</td>
+                        <td th:text="${cinta}">Cinta</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Contenedor de búsqueda de programas por identificador de cinta -->
+        <section class="search-section">
+            <form th:action="@{/listar-cinta}" method="get">
+                <label for="identificadorCinta">Identificador de la cinta:</label>
+                <input type="text" id="identificadorCinta" name="identificadorCinta" placeholder="Ejemplo: A o 45">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <!-- Tabla de programas en la cinta especificada -->
+            <div th:if="${programas}">
+                <h3>Programas en la Cinta</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Cinta</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr th:each="dato : ${programas}">
                         <td th:text="${dato.numero}">Nº</td>
                         <td th:text="${dato.nombre}">Nombre</td>
                         <td th:text="${dato.tipo}">Tipo</td>
                         <td th:text="${dato.cinta}">Cinta</td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 </div>
 </body>
 </html>

@@ -218,7 +218,19 @@ public class MainService {
 
     private Programa obtenerDatosPrograma(String texto) {
         // Expresión regular para capturar el número, nombre, tipo y cinta
-        Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+([\\w]+)\\s+([\\w]+)\\s+CINTA:([A-Z])");
+        HashSet<String> clasesValidas;
+        clasesValidas = new HashSet<>();
+        clasesValidas.add("UTILIDAD");
+        clasesValidas.add("ARCADE");
+        clasesValidas.add("CONVERSACIONAL");
+        clasesValidas.add("VIDEOAVENTURA");
+        clasesValidas.add("SIMULADOR");
+        clasesValidas.add("JUEGO DE MESA"); // de mesa, pero la palabra q me encontrare es juego
+        clasesValidas.add("SIMULADOR"); // idem
+        clasesValidas.add("ESTRATEGIA");
+
+        String tipos = String.join("|", clasesValidas);
+        Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+(.*?)\\s+(" + tipos + ")\\s+CINTA:([A-Z])");
         Matcher matcher = pattern.matcher(texto);
 
         if (matcher.find()) {
