@@ -43,6 +43,7 @@ public class ProcessService {
 // TODO PROBAR Y ARREGLAR SI VA MAL
     public void matarProcesoPorNombre(String nombreProceso) {
         try {
+            this.matarProceso();
             // Comando para obtener la lista de procesos
             String comando = "tasklist /FI \"IMAGENAME eq " + nombreProceso + "\"";
             Process tasklistProcess = Runtime.getRuntime().exec(comando);
@@ -50,7 +51,6 @@ public class ProcessService {
             BufferedReader reader = new BufferedReader(new InputStreamReader(tasklistProcess.getInputStream()));
             String line;
             StringBuilder pidsToKill = new StringBuilder();
-
             // Leer la salida del comando y recopilar PIDs
             while ((line = reader.readLine()) != null) {
                 if (line.contains(nombreProceso)) {

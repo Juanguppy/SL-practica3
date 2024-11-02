@@ -49,6 +49,8 @@ public class MainService {
 
     private static final int REGISTROS_PAGINA = 18; // cada pagina muestra 18 registros en la app legada
 
+    private static final String NOMBRE_PROGRAMA = "DOSBox.exe";
+
     // returns total number of registers
     public int getTotalRegisters() throws InterruptedException, IOException {
         fileManager.crearFichero(this.ficheroEntrada);
@@ -67,7 +69,8 @@ public class MainService {
             return -1; // throw excepción, capturar y fatal error
         }
 
-        processMaker.matarProceso();
+        //processMaker.matarProceso();
+        processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
         return extraerNumeroDeRegistros(salida);
     }
 
@@ -80,7 +83,7 @@ public class MainService {
         StringBuilder contenido = new StringBuilder();
         contenido.append(RUN_PROGRAM).append(System.lineSeparator());
         contenido.append("7N").append(System.lineSeparator());
-        contenido.append(name).append(System.lineSeparator());
+        contenido.append(name.toUpperCase()).append(System.lineSeparator());
         contenido.append("").append(System.lineSeparator());
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
@@ -92,6 +95,7 @@ public class MainService {
         if (salida == null) {
             return null; // throw excepción, capturar y fatal error
         }
+        processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
         return obtenerDatosPrograma(salida);
     }
 
@@ -128,7 +132,7 @@ public class MainService {
          * }
          */
         // borrar fichero es necesario? no se
-        processMaker.matarProceso();
+        processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
         return programas;
     }
 
@@ -137,7 +141,7 @@ public class MainService {
         ArrayList<Programa> programasEnCinta = new ArrayList<>();
         System.out.println("Programas en la cinta: " + cintaID);
         for (Programa p : programas) {
-            if (p.getCinta().contains(cintaID)) {
+            if (p.getCinta().contains(cintaID.toUpperCase())) {
                 programasEnCinta.add(p);
                 // System.out.println(p);
             }
