@@ -1,11 +1,6 @@
 package es.unizar.sl.p3.controller;
 
 import es.unizar.sl.p3.services.MainService;
-import es.unizar.sl.p3.services.OCRService;
-import es.unizar.sl.p3.services.RobotService;
-import net.sourceforge.tess4j.ITesseract;
-import net.sourceforge.tess4j.Tesseract;
-import net.sourceforge.tess4j.TesseractException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +22,6 @@ public class MainController {
 
     @Autowired
     private MainService ocrService;
-
-    @Autowired
-    private RobotService robotService;
 
     private int registros = 0;
 

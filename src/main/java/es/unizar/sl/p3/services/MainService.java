@@ -20,13 +20,6 @@ import java.util.HashSet;
 
 @Service
 public class MainService {
-
-    @Autowired
-    private OCRService ocr;
-
-    @Autowired
-    private RobotService robot;
-
     @Autowired
     private ProcessService processMaker;
 
