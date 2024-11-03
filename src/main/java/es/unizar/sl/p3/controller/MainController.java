@@ -1,6 +1,5 @@
 package es.unizar.sl.p3.controller;
 
-import es.unizar.sl.p3.Input;
 import es.unizar.sl.p3.services.MainService;
 import es.unizar.sl.p3.services.OCRService;
 import es.unizar.sl.p3.services.RobotService;
@@ -32,10 +31,9 @@ public class MainController {
     @Autowired
     private RobotService robotService;
 
-    @Autowired
-    private Input input;
-
     private int registros = 0;
+
+    private ArrayList<Programa> programasListados;
 
     // Endpoint que carga la página principal con el total de registros
     @GetMapping("/")
@@ -44,7 +42,7 @@ public class MainController {
         int numRegistros = ocrService.getTotalRegisters();
         registros = numRegistros;
         model.addAttribute("numRegistros", numRegistros);
-        ArrayList<Programa> p = ocrService.listEveryProgram();
+        ArrayList<Programa> p = ocrService.listEveryProgram(); this.programasListados = p;
         model.addAttribute("programasListado", p);
         return "home";
     }
@@ -66,12 +64,12 @@ public class MainController {
         model.addAttribute("cinta", p.getCinta());
 
         // Reenviar el número de registros al modelo
-        int numRegistros = ocrService.getTotalRegisters();
-        model.addAttribute("numRegistros", numRegistros);
+        //int numRegistros = ocrService.getTotalRegisters();
+        model.addAttribute("numRegistros", registros);
 
         // Añadir la lista de todos los programas para mantenerla en la vista
-        ArrayList<Programa> programasListado = ocrService.listEveryProgram();
-        model.addAttribute("programasListado", programasListado);
+        //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
+        model.addAttribute("programasListado", programasListados);
 
         return "home";
     }
@@ -86,74 +84,12 @@ public class MainController {
         ArrayList<Programa> p = ocrService.listProgramsByCinta(identificadorCinta);
         model.addAttribute("programas", p);
 
-        int numRegistros = ocrService.getTotalRegisters();
-        model.addAttribute("numRegistros", numRegistros);
+        //int numRegistros = ocrService.getTotalRegisters();
+        model.addAttribute("numRegistros", registros);
 
-        ArrayList<Programa> programasListado = ocrService.listEveryProgram();
-        model.addAttribute("programasListado", programasListado);
+        //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
+        model.addAttribute("programasListado", programasListados);
 
         return "home";
-    }
-
-    /*
-     * @GetMapping("/total-registros")
-     * public int getTotalRegistros() throws IOException, InterruptedException {
-     * return ocrService.getTotalRegisters();
-     * }
-     */
-
-    @GetMapping("/ocr")
-    public String performOCR(Model model) {
-        try {
-            // Definir las coordenadas y dimensiones del rectángulo
-            int x = 100; // Coordenada x de la esquina superior izquierda
-            int y = 100; // Coordenada y de la esquina superior izquierda
-            int width = 500; // Ancho del rectángulo
-            int height = 300; // Alto del rectángulo
-
-            // Crear el rectángulo con las coordenadas y dimensiones especificadas
-            Rectangle screenRect = new Rectangle(x, y, width, height);
-
-            // Capturar la región específica de la pantalla
-            BufferedImage capture = new Robot().createScreenCapture(screenRect);
-
-            // Guardar la captura de pantalla en un archivo
-            File screenshotFile = new File("screenshot.png");
-            ImageIO.write(capture, "png", screenshotFile);
-
-            // Abrir el archivo de imagen para visualizar la captura
-            if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().open(screenshotFile);
-            }
-
-            // Realizar OCR en la captura de pantalla
-            ITesseract instance = new Tesseract();
-            instance.setDatapath("C:/Program Files/Tesseract-OCR/tessdata"); // Cambiar ruta según sea necesario
-            instance.setLanguage("spa"); // Configurar el idioma para usar spa.traineddata
-            String result = instance.doOCR(screenshotFile);
-            model.addAttribute("ocrResult", result);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.addAttribute("ocrResult", "Error during OCR processing");
-        }
-        ITesseract instance = new Tesseract();
-        instance.setDatapath("C:/Program Files/Tesseract-OCR/tessdata"); // Cambiar ruta según sea necesario
-        instance.setLanguage("spa"); // Configurar el idioma para usar spa.traineddata
-        // Configurar el modo de motor de OCR (OEM) y el modo de segmentación de página
-        // (PSM)
-        // instance.setOcrEngineMode(3); // Modo de motor de OCR por defecto
-        // (OEM_DEFAULT)
-        // instance.setPageSegMode(7);
-        try {
-            String result = instance
-                    .doOCR(new File("C:/Users/almod/OneDrive/Imágenes/Capturas de pantalla/ocr_example.png"));
-            model.addAttribute("ocrResult", result);
-        } catch (TesseractException e) {
-            e.printStackTrace();
-            model.addAttribute("ocrResult", "Error during OCR processing");
-        }
-
-        return "ocrResult";
     }
 }

@@ -68,10 +68,10 @@ public class MainService {
         if (salida == null) {
             return -1; // throw excepción, capturar y fatal error
         }
-
+        this.numeroRegistros=extraerNumeroDeRegistros(salida);
         //processMaker.matarProceso();
         processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
-        return extraerNumeroDeRegistros(salida);
+        return this.numeroRegistros;
     }
 
     // given program's name, list its data
@@ -102,7 +102,7 @@ public class MainService {
     public ArrayList<Programa> listEveryProgram() throws InterruptedException, IOException {
         fileManager.crearFichero(this.ficheroEntrada);
         /// Escribir en el fichero
-        // calcularNumeroRegistros();
+        getTotalRegisters();
         StringBuilder contenido = new StringBuilder();
         contenido.append(RUN_PROGRAM).append(System.lineSeparator());
         contenido.append("6").append(System.lineSeparator());
