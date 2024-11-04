@@ -53,7 +53,7 @@ public class MainService {
         contenido.append("4").append(System.lineSeparator());
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
-        processMaker.lanzarProceso(this.comando); processMaker.minimizarProceso("DOSBox");
+        processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
         Thread.sleep(3000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         // String contenidoLimpio = this.limpiarContenido(salida);
@@ -64,6 +64,7 @@ public class MainService {
         this.numeroRegistros=extraerNumeroDeRegistros(salida);
         //processMaker.matarProceso();
         processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
+        System.out.println(this.numeroRegistros);
         return this.numeroRegistros;
     }
 
@@ -80,7 +81,7 @@ public class MainService {
         contenido.append("").append(System.lineSeparator());
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
-        processMaker.lanzarProceso(this.comando); processMaker.minimizarProceso("DOSBox");
+        processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
         Thread.sleep(5000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         // String contenidoLimpio = this.limpiarContenido(salida);
@@ -108,7 +109,7 @@ public class MainService {
         }
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
-        processMaker.lanzarProceso(this.comando); processMaker.minimizarProceso("DOSBox");
+        processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
         Thread.sleep(7000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         String contenidoLimpio = this.limpiarContenido(salida);
