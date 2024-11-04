@@ -10,7 +10,7 @@ java -version
 REM Ejecuta los comandos de Gradle
 start cmd /c ".\gradlew build && .\gradlew bootRun"
 
-timeout /t 3
+timeout /t 5
 
 start "" "http://localhost:8080"
 
