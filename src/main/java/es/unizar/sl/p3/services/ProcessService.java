@@ -40,7 +40,6 @@ public class ProcessService {
         }
     }
 
-// TODO PROBAR Y ARREGLAR SI VA MAL
     public void matarProcesoPorNombre(String nombreProceso) {
         try {
             this.matarProceso();
@@ -77,6 +76,13 @@ public class ProcessService {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void minimizarProceso(String nombre) throws IOException{
+        String command = "powershell.exe -ExecutionPolicy Bypass -File minimizeDosbox.ps1 -processName " + nombre;
+        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", command);
+        processBuilder.inheritIO();
+        processBuilder.start();
     }
 
 }
