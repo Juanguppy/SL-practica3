@@ -1,1 +1,0 @@
-copy /b trainees\*.tr trainees\combined.tr
