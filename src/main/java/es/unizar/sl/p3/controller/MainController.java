@@ -27,6 +27,10 @@ public class MainController {
 
     private ArrayList<Programa> programasListados;
 
+    private Programa programa = null;
+
+    private ArrayList<Programa> programasEnCinta = null;
+
     // Endpoint que carga la página principal con el total de registros
     @GetMapping("/")
     public String welcome(Model model) throws IOException, InterruptedException {
@@ -47,6 +51,7 @@ public class MainController {
         model.addAttribute("nombrePrograma", nombrePrograma);
         // Obtener los datos del programa buscado
         Programa p = ocrService.listProgramData(nombrePrograma);
+        this.programa = p;
 
         // Añadir los detalles del programa encontrado al modelo
         model.addAttribute("programa", nombrePrograma);
@@ -58,6 +63,9 @@ public class MainController {
         // Reenviar el número de registros al modelo
         //int numRegistros = ocrService.getTotalRegisters();
         model.addAttribute("numRegistros", registros);
+        if(this.programasEnCinta != null){
+            model.addAttribute("programas", this.programasEnCinta);
+        }
 
         // Añadir la lista de todos los programas para mantenerla en la vista
         //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
@@ -74,10 +82,18 @@ public class MainController {
 
         // Programa p = ocrService.listProgramData(nombrePrograma);
         ArrayList<Programa> p = ocrService.listProgramsByCinta(identificadorCinta);
+        this.programasEnCinta = p;
         model.addAttribute("programas", p);
 
         //int numRegistros = ocrService.getTotalRegisters();
         model.addAttribute("numRegistros", registros);
+        if(this.programa != null){
+            model.addAttribute("programa", programa.getNombre());
+            model.addAttribute("numero", programa.getNumero());
+            model.addAttribute("nombre", programa.getNombre());
+            model.addAttribute("tipo", programa.getTipo());
+            model.addAttribute("cinta", programa.getCinta());
+        }
 
         //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
         model.addAttribute("programasListado", programasListados);
