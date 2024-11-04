@@ -3,7 +3,6 @@
 *.iml
 out
 build/
-bin/
 .vscode/
 
 # Ignore Gradle GUI config
