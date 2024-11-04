@@ -1,5 +1,3 @@
 RUN "database"
-7N
-TIR NA NOG
-
-
+6
+                                            
