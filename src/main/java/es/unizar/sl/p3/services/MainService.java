@@ -45,8 +45,13 @@ public class MainService {
 
     private static final String NOMBRE_PROGRAMA = "DOSBox.exe";
 
+    private final String FICHERO_ESCRITURA1 = rutaFicheros + "\\DATOS.DAT";
+
+    private final String FICHERO_ESCRITURA2 = rutaFicheros + "\\INFORM.DAT";
+
     // returns total number of registers
     public int getTotalRegisters() throws InterruptedException, IOException {
+        this.waitUnlocked();
         // generar entrada 
         String randomized = generateRandomString(2);
         String entradaFile = "input" + randomized + ".txt";
@@ -83,6 +88,7 @@ public class MainService {
     public Programa listProgramData(String name) throws RuntimeException, InterruptedException, IOException {
         // Numero, Nombre, Tipo, Cinta, Registro
                 // generar entrada 
+        this.waitUnlocked();
         String randomized = generateRandomString(2);
         String entradaFile = "input" + randomized + ".txt";
         String salidaFile = "STDERR" + randomized + ".TXT";
@@ -115,6 +121,7 @@ public class MainService {
 
     public ArrayList<Programa> listEveryProgram() throws InterruptedException, IOException {
         /// Escribir en el fichero
+        this.waitUnlocked();
         getTotalRegisters();
         String randomized = generateRandomString(2);
         String entradaFile = "input" + randomized + ".txt";
@@ -297,5 +304,18 @@ public class MainService {
             sb.append(characters.charAt(random.nextInt(characters.length())));
         }
         return sb.toString();
+    }
+
+    // para esperar q nadie escribe en la app legada
+    private void waitUnlocked(){
+        while (fileManager.isFileLocked(FICHERO_ESCRITURA1) || fileManager.isFileLocked(FICHERO_ESCRITURA2)) {
+            try {
+                System.out.println("Fichero bloqueado!");
+                Thread.sleep(100); // Esperar 100 milisegundos antes de volver a verificar
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
     }
 }

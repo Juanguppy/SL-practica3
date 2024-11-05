@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -45,6 +46,17 @@ public class IOService {
     public void escribirFichero(String rutaArchivo, String contenido) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             writer.write(contenido);
+        }
+    }
+
+    public static boolean isFileLocked(String filePath) {
+        File file = new File(filePath);
+        try (FileOutputStream fos = new FileOutputStream(file, true)) {
+            // Si podemos abrir el archivo en modo escritura, no está bloqueado
+            return false;
+        } catch (IOException e) {
+            // Si obtenemos una excepción, el archivo está bloqueado
+            return true;
         }
     }
 }

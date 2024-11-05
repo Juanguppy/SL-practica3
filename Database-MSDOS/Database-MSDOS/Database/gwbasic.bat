@@ -1,2 +1,2 @@
 @echo off
-gwbasic.exe DATABASE.BAS < inputM8.txt > resultado.txt 2> STDERRM8.TXT
+gwbasic.exe DATABASE.BAS < inputDc.txt > resultado.txt 2> STDERRDc.TXT
