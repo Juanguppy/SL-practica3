@@ -31,73 +31,81 @@ public class MainController {
 
     private ArrayList<Programa> programasEnCinta = null;
 
+    private final Object mutex = new Object();
+
     // Endpoint que carga la página principal con el total de registros
     @GetMapping("/")
     public String welcome(Model model) throws IOException, InterruptedException {
-        // Obtener y enviar el número de registros al modelo
-        int numRegistros = ocrService.getTotalRegisters();
-        registros = numRegistros;
-        model.addAttribute("numRegistros", numRegistros);
-        ArrayList<Programa> p = ocrService.listEveryProgram(); this.programasListados = p;
-        model.addAttribute("programasListado", p);
-        return "home";
+        synchronized(mutex){
+            // Obtener y enviar el número de registros al modelo
+            int numRegistros = ocrService.getTotalRegisters();
+            registros = numRegistros;
+            model.addAttribute("numRegistros", numRegistros);
+            ArrayList<Programa> p = ocrService.listEveryProgram(); this.programasListados = p;
+            model.addAttribute("programasListado", p);
+            return "home";
+        }
     }
 
     // Endpoint para listar datos de un programa específico ingresado por el usuario
     @GetMapping("/listar-programa")
     public String listarPrograma(@RequestParam("nombrePrograma") String nombrePrograma, Model model)
             throws IOException, InterruptedException {
-        // Añadir el nombre del programa al modelo
-        model.addAttribute("nombrePrograma", nombrePrograma);
-        // Obtener los datos del programa buscado
-        Programa p = ocrService.listProgramData(nombrePrograma);
-        this.programa = p;
+        synchronized(mutex){
+            // Añadir el nombre del programa al modelo
+            model.addAttribute("nombrePrograma", nombrePrograma);
+            // Obtener los datos del programa buscado
+            Programa p = ocrService.listProgramData(nombrePrograma);
+            this.programa = p;
 
-        // Añadir los detalles del programa encontrado al modelo
-        model.addAttribute("programa", nombrePrograma);
-        model.addAttribute("numero", p.getNumero());
-        model.addAttribute("nombre", p.getNombre());
-        model.addAttribute("tipo", p.getTipo());
-        model.addAttribute("cinta", p.getCinta());
+            // Añadir los detalles del programa encontrado al modelo
+            model.addAttribute("programa", nombrePrograma);
+            model.addAttribute("numero", p.getNumero());
+            model.addAttribute("nombre", p.getNombre());
+            model.addAttribute("tipo", p.getTipo());
+            model.addAttribute("cinta", p.getCinta());
 
-        // Reenviar el número de registros al modelo
-        //int numRegistros = ocrService.getTotalRegisters();
-        model.addAttribute("numRegistros", registros);
-        if(this.programasEnCinta != null){
-            model.addAttribute("programas", this.programasEnCinta);
+            // Reenviar el número de registros al modelo
+            //int numRegistros = ocrService.getTotalRegisters();
+            model.addAttribute("numRegistros", registros);
+            if(this.programasEnCinta != null){
+                model.addAttribute("programas", this.programasEnCinta);
+            }
+
+            // Añadir la lista de todos los programas para mantenerla en la vista
+            //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
+            model.addAttribute("programasListado", programasListados);
+
+            return "home";
         }
-
-        // Añadir la lista de todos los programas para mantenerla en la vista
-        //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
-        model.addAttribute("programasListado", programasListados);
-
-        return "home";
     }
 
     @GetMapping("/listar-cinta")
     public String listarCinta(@RequestParam("identificadorCinta") String identificadorCinta, Model model)
             throws IOException, InterruptedException {
         // Añadir el nombre del programa al modelo
-        model.addAttribute("identificadorCinta", identificadorCinta);
+        synchronized(mutex){
+            model.addAttribute("identificadorCinta", identificadorCinta);
 
-        // Programa p = ocrService.listProgramData(nombrePrograma);
-        ArrayList<Programa> p = ocrService.listProgramsByCinta(identificadorCinta);
-        this.programasEnCinta = p;
-        model.addAttribute("programas", p);
+            // Programa p = ocrService.listProgramData(nombrePrograma);
+            ArrayList<Programa> p = ocrService.listProgramsByCinta(identificadorCinta);
+            this.programasEnCinta = p;
+            model.addAttribute("programas", p);
 
-        //int numRegistros = ocrService.getTotalRegisters();
-        model.addAttribute("numRegistros", registros);
-        if(this.programa != null){
-            model.addAttribute("programa", programa.getNombre());
-            model.addAttribute("numero", programa.getNumero());
-            model.addAttribute("nombre", programa.getNombre());
-            model.addAttribute("tipo", programa.getTipo());
-            model.addAttribute("cinta", programa.getCinta());
+            //int numRegistros = ocrService.getTotalRegisters();
+            model.addAttribute("numRegistros", registros);
+            if(this.programa != null){
+                model.addAttribute("programa", programa.getNombre());
+                model.addAttribute("numero", programa.getNumero());
+                model.addAttribute("nombre", programa.getNombre());
+                model.addAttribute("tipo", programa.getTipo());
+                model.addAttribute("cinta", programa.getCinta());
+            }
+
+            //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
+            model.addAttribute("programasListado", programasListados);
+
+            return "home";
         }
-
-        //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
-        model.addAttribute("programasListado", programasListados);
-
-        return "home";
     }
 }
