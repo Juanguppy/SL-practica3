@@ -234,7 +234,7 @@ public class MainService {
         clasesValidas.add("JUEGO DE MESA"); // de mesa, pero la palabra q me encontrare es juego
         clasesValidas.add("SIMULADOR"); // idem
         clasesValidas.add("ESTRATEGIA");
-
+        clasesValidas.add("S. DEPORTIVO");
         String tipos = String.join("|", clasesValidas);
         Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+(.*?)\\s+(" + tipos + ")\\s+CINTA:([A-Z]|\\d+)");
         Matcher matcher = pattern.matcher(texto);
