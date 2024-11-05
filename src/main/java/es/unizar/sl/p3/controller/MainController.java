@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import es.unizar.sl.p3.model.Programa;
 
 import java.awt.Rectangle;
@@ -18,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @Controller
+@SessionAttributes({"numRegistros", "programasListado", "nombrePrograma", "programa", "numero", 
+                    "nombre", "tipo", "cinta", "identificadorCinta", "programas"})
 public class MainController {
 
     @Autowired
@@ -25,11 +29,11 @@ public class MainController {
 
     private int registros = 0;
 
-    private ArrayList<Programa> programasListados;
+    //private ArrayList<Programa> programasListados;
 
-    private Programa programa = null;
+    //private Programa programa = null;
 
-    private ArrayList<Programa> programasEnCinta = null;
+    //private ArrayList<Programa> programasEnCinta = null;
 
     private final Object mutex = new Object();
 
@@ -41,7 +45,7 @@ public class MainController {
             int numRegistros = ocrService.getTotalRegisters();
             registros = numRegistros;
             model.addAttribute("numRegistros", numRegistros);
-            ArrayList<Programa> p = ocrService.listEveryProgram(); this.programasListados = p;
+            ArrayList<Programa> p = ocrService.listEveryProgram();
             model.addAttribute("programasListado", p);
             return "home";
         }
@@ -56,7 +60,6 @@ public class MainController {
             model.addAttribute("nombrePrograma", nombrePrograma);
             // Obtener los datos del programa buscado
             Programa p = ocrService.listProgramData(nombrePrograma);
-            this.programa = p;
 
             // Añadir los detalles del programa encontrado al modelo
             model.addAttribute("programa", nombrePrograma);
@@ -64,17 +67,6 @@ public class MainController {
             model.addAttribute("nombre", p.getNombre());
             model.addAttribute("tipo", p.getTipo());
             model.addAttribute("cinta", p.getCinta());
-
-            // Reenviar el número de registros al modelo
-            //int numRegistros = ocrService.getTotalRegisters();
-            model.addAttribute("numRegistros", registros);
-            if(this.programasEnCinta != null){
-                model.addAttribute("programas", this.programasEnCinta);
-            }
-
-            // Añadir la lista de todos los programas para mantenerla en la vista
-            //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
-            model.addAttribute("programasListado", programasListados);
 
             return "home";
         }
@@ -89,23 +81,15 @@ public class MainController {
 
             // Programa p = ocrService.listProgramData(nombrePrograma);
             ArrayList<Programa> p = ocrService.listProgramsByCinta(identificadorCinta);
-            this.programasEnCinta = p;
             model.addAttribute("programas", p);
-
-            //int numRegistros = ocrService.getTotalRegisters();
-            model.addAttribute("numRegistros", registros);
-            if(this.programa != null){
-                model.addAttribute("programa", programa.getNombre());
-                model.addAttribute("numero", programa.getNumero());
-                model.addAttribute("nombre", programa.getNombre());
-                model.addAttribute("tipo", programa.getTipo());
-                model.addAttribute("cinta", programa.getCinta());
-            }
-
-            //ArrayList<Programa> programasListado = ocrService.listEveryProgram();
-            model.addAttribute("programasListado", programasListados);
 
             return "home";
         }
     }
+
+    @ModelAttribute
+    public void agregarAtributosDeSesion(Model model) {
+        
+    }
+    
 }
