@@ -17,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 
 @Service
 public class MainService {
@@ -46,16 +47,24 @@ public class MainService {
 
     // returns total number of registers
     public int getTotalRegisters() throws InterruptedException, IOException {
-        fileManager.crearFichero(this.ficheroEntrada);
+        // generar entrada 
+        String randomized = generateRandomString(2);
+        String entradaFile = "input" + randomized + ".txt";
+        String salidaFile = "STDERR" + randomized + ".TXT";
+        String execGwbase = "@echo off\r\n"+ "gwbasic.exe DATABASE.BAS < "+entradaFile+ " > resultado.txt 2> "+salidaFile;
+        fileManager.crearFichero(rutaFicheros + "\\" +entradaFile); 
+        fileManager.crearFichero(rutaFicheros + "\\" + salidaFile);
+        fileManager.escribirFichero(rutaFicheros + "\\gwbasic.bat", execGwbase);
         /// Escribir en el fichero
         StringBuilder contenido = new StringBuilder();
         contenido.append(RUN_PROGRAM).append(System.lineSeparator());
         contenido.append("4").append(System.lineSeparator());
         contenido.append(System.lineSeparator());
-        fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
+        fileManager.escribirFichero(rutaFicheros + "\\" + entradaFile, contenido.toString());
         processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
         Thread.sleep(5000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
-        String salida = fileManager.leerFichero(this.ficheroSalida);
+        String salida = fileManager.leerFichero(rutaFicheros + "\\" + salidaFile);
+        System.out.println(salida);
         // String contenidoLimpio = this.limpiarContenido(salida);
 
         if (salida == null) {
@@ -65,13 +74,22 @@ public class MainService {
         //processMaker.matarProceso();
         processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
         System.out.println(this.numeroRegistros);
+        fileManager.eliminarFichero(rutaFicheros + "\\" +entradaFile); 
+        fileManager.eliminarFichero(rutaFicheros + "\\" + salidaFile);
         return this.numeroRegistros;
     }
 
     // given program's name, list its data
     public Programa listProgramData(String name) throws RuntimeException, InterruptedException, IOException {
         // Numero, Nombre, Tipo, Cinta, Registro
-        fileManager.crearFichero(this.ficheroEntrada);
+                // generar entrada 
+        String randomized = generateRandomString(2);
+        String entradaFile = "input" + randomized + ".txt";
+        String salidaFile = "STDERR" + randomized + ".TXT";
+        String execGwbase = "@echo off\r\n"+ "gwbasic.exe DATABASE.BAS < "+entradaFile+ " > resultado.txt 2> "+salidaFile;
+        fileManager.crearFichero(rutaFicheros + "\\" +entradaFile); 
+        fileManager.crearFichero(rutaFicheros + "\\" + salidaFile);
+        fileManager.escribirFichero(rutaFicheros + "\\gwbasic.bat", execGwbase);
         /// Escribir en el fichero
         // calcularNumeroRegistros();
         StringBuilder contenido = new StringBuilder();
@@ -80,23 +98,31 @@ public class MainService {
         contenido.append(name.toUpperCase()).append(System.lineSeparator());
         contenido.append("").append(System.lineSeparator());
         contenido.append(System.lineSeparator());
-        fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
+        fileManager.escribirFichero(rutaFicheros + "\\" +entradaFile, contenido.toString());
         processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
         Thread.sleep(5000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
-        String salida = fileManager.leerFichero(this.ficheroSalida);
+        String salida = fileManager.leerFichero(rutaFicheros + "\\" +salidaFile);
         // String contenidoLimpio = this.limpiarContenido(salida);
 
         if (salida == null) {
             return null; // throw excepción, capturar y fatal error
         }
         processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
+        fileManager.eliminarFichero(rutaFicheros + "\\" +entradaFile); 
+        fileManager.eliminarFichero(rutaFicheros + "\\" + salidaFile);
         return obtenerDatosPrograma(salida);
     }
 
     public ArrayList<Programa> listEveryProgram() throws InterruptedException, IOException {
-        fileManager.crearFichero(this.ficheroEntrada);
         /// Escribir en el fichero
         getTotalRegisters();
+        String randomized = generateRandomString(2);
+        String entradaFile = "input" + randomized + ".txt";
+        String salidaFile = "STDERR" + randomized + ".TXT";
+        String execGwbase = "@echo off\r\n"+ "gwbasic.exe DATABASE.BAS < "+entradaFile+ " > resultado.txt 2> "+salidaFile;
+        fileManager.crearFichero(rutaFicheros + "\\" +entradaFile); 
+        fileManager.crearFichero(rutaFicheros + "\\" + salidaFile);
+        fileManager.escribirFichero(rutaFicheros + "\\gwbasic.bat", execGwbase);
         StringBuilder contenido = new StringBuilder();
         contenido.append(RUN_PROGRAM).append(System.lineSeparator());
         contenido.append("6").append(System.lineSeparator());
@@ -108,10 +134,10 @@ public class MainService {
             contenido.append(" ");
         }
         contenido.append(System.lineSeparator());
-        fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
+        fileManager.escribirFichero(rutaFicheros + "\\" +entradaFile, contenido.toString());
         processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
         Thread.sleep(7000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
-        String salida = fileManager.leerFichero(this.ficheroSalida);
+        String salida = fileManager.leerFichero(rutaFicheros + "\\" +salidaFile);
         String contenidoLimpio = this.limpiarContenido(salida);
         // System.out.println(contenidoLimpio);
         // fileManager.escribirFichero("prueba", contenidoLimpio); // debugging para ver
@@ -127,6 +153,8 @@ public class MainService {
          */
         // borrar fichero es necesario? no se
         processMaker.matarProcesoPorNombre(NOMBRE_PROGRAMA);
+        fileManager.eliminarFichero(rutaFicheros + "\\" +entradaFile); 
+        fileManager.eliminarFichero(rutaFicheros + "\\" + salidaFile);
         return programas;
     }
 
@@ -261,18 +289,13 @@ public class MainService {
         }
     }
 
-    //////////////////////////////////////// IO logic
-    private String saveImage(BufferedImage capture) throws IOException {
+    private String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklm0123456789";
         Random random = new Random();
-        int randomNumber = random.nextInt(10000);
-        String filePath = "Tesseract-OCR\\capturas\\captura_" + randomNumber + ".png";
-        File outputfile = new File(filePath);
-        ImageIO.write(capture, "png", outputfile);
-
-        return filePath;
-    }
-
-    private void deleteImage(String filePath) throws IOException {
-        Files.delete(Paths.get(filePath));
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return sb.toString();
     }
 }
