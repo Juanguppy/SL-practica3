@@ -235,6 +235,7 @@ public class MainService {
         clasesValidas.add("SIMULADOR"); // idem
         clasesValidas.add("ESTRATEGIA");
         clasesValidas.add("S. DEPORTIVO");
+        clasesValidas.add("---");
         String tipos = String.join("|", clasesValidas);
         Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+(.*?)\\s+(" + tipos + ")\\s+CINTA:([A-Z]|\\d+)");
         Matcher matcher = pattern.matcher(texto);
