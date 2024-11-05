@@ -54,7 +54,7 @@ public class MainService {
         contenido.append(System.lineSeparator());
         fileManager.escribirFichero(this.ficheroEntrada, contenido.toString());
         processMaker.lanzarProceso(this.comando); //processMaker.minimizarProceso("DOSBox");
-        Thread.sleep(3000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
+        Thread.sleep(5000); // en un segundo deberia dar tiempo, ya iremos ajustando a ojimetro
         String salida = fileManager.leerFichero(this.ficheroSalida);
         // String contenidoLimpio = this.limpiarContenido(salida);
 
@@ -134,13 +134,25 @@ public class MainService {
         ArrayList<Programa> programas = this.listEveryProgram();
         ArrayList<Programa> programasEnCinta = new ArrayList<>();
         System.out.println("Programas en la cinta: " + cintaID);
+        String cintaIDUpper = cintaID.toUpperCase();
+    
         for (Programa p : programas) {
-            if (p.getCinta().contains(cintaID.toUpperCase())) {
-                programasEnCinta.add(p);
-                // System.out.println(p);
+            String[] cintaParts = p.getCinta().split("-");
+            boolean found = false;
+            for (String part : cintaParts) {
+                if (part.equals(cintaIDUpper)) {
+                    programasEnCinta.add(p);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found && cintaIDUpper.contains("-")) {
+                if (p.getCinta().contains(cintaIDUpper)) {
+                    programasEnCinta.add(p);
+                }
             }
         }
-
+    
         return programasEnCinta;
     }
 
@@ -224,7 +236,7 @@ public class MainService {
         clasesValidas.add("ESTRATEGIA");
 
         String tipos = String.join("|", clasesValidas);
-        Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+(.*?)\\s+(" + tipos + ")\\s+CINTA:([A-Z])");
+        Pattern pattern = Pattern.compile("(\\d+)\\s+-\\s+(.*?)\\s+(" + tipos + ")\\s+CINTA:([A-Z]|\\d+)");
         Matcher matcher = pattern.matcher(texto);
 
         if (matcher.find()) {
