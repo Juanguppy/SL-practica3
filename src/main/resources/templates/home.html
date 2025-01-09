@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aplicación de Consulta</title>
+    <style>
+        /* Estilos para centrar el contenido y estilizar */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        header, section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Contenedor principal para dividir la página */
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Lista de programas a la izquierda */
+        .program-list {
+            width: 25%;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-right: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .program-list h3 {
+            text-align: center;
+        }
+
+        .program-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .program-list li {
+            margin: 5px 0;
+        }
+
+        .program-list a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .program-list a:hover {
+            color: #007bff;
+        }
+
+        /* Contenedor de búsqueda */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            width: 75%;
+            max-width: 800px;
+        }
+
+        .search-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Aplicación de Consulta de Registros</h1>
+</header>
+
+<!-- Sección para mostrar el número total de registros -->
+<section>
+    <h2>Total de Registros</h2>
+    <p>Número de registros en el sistema: <span th:text="${numRegistros}">0</span></p>
+</section>
+
+<div class="main-container">
+    <!-- Lista de programas -->
+    <div class="program-list">
+        <h3>Lista de Programas</h3>
+        <ul>
+            <li th:each="programa : ${programasListado}">
+                <a th:href="@{/listar-programa(nombrePrograma=${programa.nombre})}"
+                   th:text="${programa.nombre}">Programa</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contenedor de búsqueda de programas -->
+    <div class="search-container">
+        <!-- Búsqueda de programas por nombre -->
+        <section class="search-section">
+            <form th:action="@{/listar-programa}" method="get">
+                <label for="nombrePrograma">Nombre del programa:</label>
+                <input type="text" id="nombrePrograma" name="nombrePrograma" placeholder="Ejemplo: Programa1">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <!-- Tabla de datos del programa -->
+            <div th:if="${programa}">
+                <h3>Datos del Programa</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Cinta</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${numero}">Nº</td>
+                        <td th:text="${nombre}">Nombre</td>
+                        <td th:text="${tipo}">Tipo</td>
+                        <td th:text="${cinta}">Cinta</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Contenedor de búsqueda de programas por identificador de cinta -->
+        <section class="search-section">
+            <form th:action="@{/listar-cinta}" method="get">
+                <label for="identificadorCinta">Identificador de la cinta:</label>
+                <input type="text" id="identificadorCinta" name="identificadorCinta" placeholder="Ejemplo: A o 45">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <!-- Tabla de programas en la cinta especificada -->
+            <div th:if="${programas}">
+                <h3>Programas en la Cinta</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Cinta</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dato : ${programas}">
+                        <td th:text="${dato.numero}">Nº</td>
+                        <td th:text="${dato.nombre}">Nombre</td>
+                        <td th:text="${dato.tipo}">Tipo</td>
+                        <td th:text="${dato.cinta}">Cinta</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

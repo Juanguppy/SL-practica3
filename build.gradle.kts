@@ -12,7 +12,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21)) // Cambiar a Java 21
+        languageVersion.set(JavaLanguageVersion.of(17)) // Cambiar a Java 21
     }
 }
 
@@ -21,7 +21,6 @@ dependencies {
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.thymeleaf)
     implementation(libs.bootstrap)
-    implementation("net.sourceforge.tess4j:tess4j:4.5.5")
     testImplementation(libs.spring.boot.starter.test)
 }
 
